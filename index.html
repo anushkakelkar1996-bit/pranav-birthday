@@ -5,12 +5,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Birthday Quest</title>
 <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+<!-- PWA / mobile -->
+<meta name="theme-color" content="#0a0a14">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Bday Quest">
+<link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%230a0a14'/><text y='70' font-size='70' x='12'>🍄</text></svg>">
 <style>
 :root { color-scheme: dark; }
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 html, body {
-  height: 100%;
+  height: 100dvh;
   background: #0a0a14;
   display: flex;
   flex-direction: column;
@@ -23,7 +30,7 @@ html, body {
 
 #wrap {
   position: relative;
-  width: min(800px, 100vw);
+  width: min(100vw, calc(100dvh * 1.6));
 }
 
 #gc {
@@ -218,20 +225,90 @@ html, body {
 
 /* ── TOUCH CONTROLS ── */
 #tc {
-  position: absolute; bottom: 6px; left: 0; right: 0;
-  display: none; justify-content: space-between;
-  padding: 0 8px; z-index: 8;
+  position: absolute; bottom: 0; left: 0; right: 0;
+  display: none; justify-content: space-between; align-items: flex-end;
+  padding: 0 10px 10px; z-index: 8;
+  pointer-events: none;
 }
 @media (hover: none) and (pointer: coarse) { #tc { display: flex; } }
-.tg { display: flex; gap: 5px; }
+.tg { display: flex; gap: 6px; pointer-events: all; }
 .tb {
-  width: 54px; height: 54px;
-  background: rgba(255,255,255,.1); border: 2px solid rgba(255,255,255,.22);
-  border-radius: 10px; display: flex; align-items: center; justify-content: center;
-  font-size: 1.15rem; color: #fff; cursor: pointer;
+  width: 66px; height: 66px;
+  background: rgba(0,0,0,.38);
+  border: 2.5px solid rgba(255,255,255,.30);
+  border-bottom: 4px solid rgba(255,255,255,.12);
+  border-radius: 14px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.45rem; color: rgba(255,255,255,.9); cursor: pointer;
   user-select: none; -webkit-user-select: none; -webkit-tap-highlight-color: transparent;
+  transition: background .05s, transform .05s;
+  backdrop-filter: blur(4px);
+  box-shadow: 0 4px 14px rgba(0,0,0,.4);
 }
-.tb:active { background: rgba(255,255,255,.28); }
+.tb.pressed, .tb:active {
+  background: rgba(255,255,255,.22);
+  transform: scale(.92);
+  border-bottom-width: 2px;
+}
+#tbJ {
+  width: 74px; height: 74px; font-size: 1.65rem;
+  background: rgba(220,50,50,.35);
+  border-color: rgba(255,120,120,.4);
+}
+#tbJ.pressed, #tbJ:active { background: rgba(220,50,50,.6); }
+
+/* ── NFC SPLASH ── */
+#nfcSplash {
+  position: absolute; inset: 0;
+  background: linear-gradient(160deg, #1a1a3a 0%, #0a0a14 100%);
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  z-index: 50; text-align: center; padding: 24px;
+  gap: 16px;
+}
+.nfc-shroom {
+  font-size: clamp(3rem, 15vw, 5rem);
+  animation: nfcBob 0.9s ease-in-out infinite alternate;
+  filter: drop-shadow(0 0 24px rgba(255,215,0,.6));
+}
+@keyframes nfcBob {
+  from { transform: translateY(0) scale(1); }
+  to   { transform: translateY(-18px) scale(1.06); }
+}
+.nfc-title {
+  color: #FFD700;
+  font-size: clamp(.55rem, 3.2vw, 1rem);
+  text-shadow: 3px 3px 0 #7a3000;
+  line-height: 2.2; letter-spacing: 1px;
+}
+.nfc-sub {
+  color: rgba(255,255,255,.8);
+  font-size: clamp(.32rem, 1.5vw, .5rem);
+  line-height: 2.6;
+  text-shadow: 1px 1px 0 #000;
+  max-width: 280px;
+}
+.nfc-tap {
+  color: #4ECDC4;
+  font-size: clamp(.36rem, 1.5vw, .48rem);
+  animation: nfcBlink 1s step-start infinite;
+  margin-top: 8px;
+}
+@keyframes nfcBlink { 50% { opacity: 0; } }
+.nfc-stars {
+  position: absolute; inset: 0; pointer-events: none; overflow: hidden;
+}
+.nfc-star {
+  position: absolute; color: #FFD700; font-size: 1rem;
+  animation: nfcFloat linear infinite;
+  opacity: 0.6;
+}
+@keyframes nfcFloat {
+  from { transform: translateY(110%) rotate(0deg); opacity: 0; }
+  10%  { opacity: .6; }
+  90%  { opacity: .6; }
+  to   { transform: translateY(-10%) rotate(360deg); opacity: 0; }
+}
 
 /* ── CONFETTI ── */
 #cfc {
@@ -282,8 +359,17 @@ html, body {
       <div class="tb" id="tbR">▶</div>
     </div>
     <div class="tg">
-      <div class="tb" id="tbJ">▲</div>
+      <div class="tb" id="tbJ">⬆</div>
     </div>
+  </div>
+
+  <!-- NFC splash (shown when ?nfc=1 in URL) -->
+  <div id="nfcSplash" style="display:none">
+    <div class="nfc-stars" id="nfcStars"></div>
+    <div class="nfc-shroom">🍄</div>
+    <div class="nfc-title">KEYCHAIN ACTIVATED!</div>
+    <div class="nfc-sub">Pranav, you found it!<br>Your birthday adventure is about to begin...</div>
+    <div class="nfc-tap">▶ TAP TO START ◀</div>
   </div>
 </div>
 
@@ -465,10 +551,19 @@ window.addEventListener('keyup', e => { keys[e.code] = false; });
 function addTouch(id, kc, tap) {
   const el = document.getElementById(id);
   if(!el) return;
-  const dn = e => { e.preventDefault(); tap ? tap() : keys[kc]=true; };
-  const up = e => { e.preventDefault(); if(!tap) keys[kc]=false; };
+  const dn = e => {
+    e.preventDefault();
+    el.classList.add('pressed');
+    tap ? tap() : keys[kc]=true;
+  };
+  const up = e => {
+    e.preventDefault();
+    el.classList.remove('pressed');
+    if(!tap) keys[kc]=false;
+  };
   el.addEventListener('touchstart', dn, {passive:false});
   el.addEventListener('touchend',   up, {passive:false});
+  el.addEventListener('touchcancel',up, {passive:false});
   el.addEventListener('mousedown',  dn);
   el.addEventListener('mouseup',    up);
 }
@@ -478,7 +573,7 @@ addTouch('tbJ', null, () => { if(P.onGround && running && !mOpen) doJump(); });
 
 function doJump() {
   P.vy = JUMP; P.onGround = false; P.jumping = true;
-  sfxJump();
+  sfxJump(); buzz(18);
 }
 
 // ══════════════════════════════════════════
@@ -529,6 +624,7 @@ function update() {
         updateHUD();
         spawnParts(m.x+12, m.y+12);
         sfxCoin();
+        buzz([60, 40, 60, 40, 140]); // collect mushroom pattern
         openModal(g);
       } else if(!m.st) {
         m.sl = true;
@@ -895,6 +991,49 @@ function sfxCoin(){
     });
   }catch(e){}
 }
+
+// ══════════════════════════════════════════
+// HAPTICS
+// ══════════════════════════════════════════
+function buzz(pattern) {
+  try { if(navigator.vibrate) navigator.vibrate(pattern); } catch(e){}
+}
+
+// ══════════════════════════════════════════
+// NFC SPLASH
+// ══════════════════════════════════════════
+(function initNFC() {
+  const params = new URLSearchParams(window.location.search);
+  if(!params.has('nfc')) return;
+
+  const splash = document.getElementById('nfcSplash');
+  const starsEl = document.getElementById('nfcStars');
+  splash.style.display = 'flex';
+
+  // Floating ⭐ stars
+  for(let i=0;i<14;i++) {
+    const s = document.createElement('div');
+    s.className = 'nfc-star';
+    s.textContent = ['⭐','✨','🌟','💫'][i%4];
+    s.style.left = (5+Math.random()*90)+'%';
+    s.style.animationDuration = (3+Math.random()*4)+'s';
+    s.style.animationDelay = (-Math.random()*5)+'s';
+    s.style.fontSize = (.7+Math.random()*.8)+'rem';
+    starsEl.appendChild(s);
+  }
+
+  // Celebratory buzz on NFC tap arrival
+  buzz([80, 60, 80, 60, 200]);
+
+  const dismiss = () => {
+    buzz([30]);
+    splash.style.transition = 'opacity .45s';
+    splash.style.opacity = '0';
+    setTimeout(() => { splash.style.display = 'none'; }, 460);
+  };
+  splash.addEventListener('touchstart', dismiss, {once:true, passive:true});
+  splash.addEventListener('click', dismiss, {once:true});
+})();
 
 // ══════════════════════════════════════════
 // GAME LOOP
