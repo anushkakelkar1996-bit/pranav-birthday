@@ -43,6 +43,20 @@ html, body {
   image-rendering: crisp-edges;
 }
 
+/* ── PORTRAIT MOBILE: fill full screen ── */
+@media (orientation: portrait) and (max-width: 768px) {
+  body { justify-content: flex-start; }
+  #wrap {
+    width: 100vw;
+    height: 100dvh;
+  }
+  #gc {
+    aspect-ratio: unset !important;
+    width: 100% !important;
+    height: 100% !important;
+  }
+}
+
 /* ── START SCREEN ── */
 #ss {
   position: absolute; inset: 0;
@@ -325,10 +339,10 @@ html, body {
 
   <div id="hud">
     <button id="homeBtn" onclick="goHome()">🏠</button>
-    <div class="hm" id="h0">🍄</div>
-    <div class="hm" id="h1">🍄</div>
-    <div class="hm" id="h2">🍄</div>
-    <div class="hm" id="h3">🍄</div>
+    <div class="hm" id="h4">🍄</div>
+    <div class="hm" id="h5">🍄</div>
+    <div class="hm" id="h6">🍄</div>
+    <div class="hm" id="h7">🍄</div>
   </div>
 
   <div id="ss">
@@ -356,7 +370,7 @@ html, body {
   <div id="tc">
     <div class="tg">
       <div class="tb" id="tbL">◀</div>
-      <div class="tb" id="tbR">▶</div>
+  2   <div class="tb" id="tbR">▶</div>
     </div>
     <div class="tg">
       <div class="tb" id="tbJ">⬆</div>
@@ -451,7 +465,7 @@ function buildGrid() {
     d.innerHTML = `
       <div class="gd">${g.label}</div>
       <div class="gi">${got?'✅':ul?g.emoji:'🔒'}</div>
-      <div class="gs">${got?'Found!':ul?'Ready!':'in '+daysUntil(g.unlock)+'d'}</div>`;
+      <div class="gs">${got?'Found!':ul?'Ready!':'in '+daysUntil(g.unlock)+'d'}|/div>`;
     el.appendChild(d);
   });
 }
@@ -830,7 +844,7 @@ function dMario() {
 function marioAt(x,y,fi) {
   ctx.fillStyle='#5b2800';
   const sh=[
-    [[x+4,y+38,9,10],[x+15,y+38,9,10]],
+    [[x+2,y+36,9,13],[x+15,y+38,9,10]],
     [[x+1,y+37,10,11],[x+16,y+39,9,9]],
     [[x+5,y+37,8,11],[x+17,y+38,8,11]],
     [[x+2,y+36,9,13],[x+17,y+36,9,13]],
