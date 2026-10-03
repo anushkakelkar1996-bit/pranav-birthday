@@ -55,6 +55,47 @@ html, body {
     width: 100% !important;
     height: 100% !important;
   }
+
+  /* Start screen: compact layout that fits portrait */
+  #ss {
+    padding: 14px 14px 50px;
+    justify-content: flex-start;
+    padding-top: 18px;
+    overflow-y: auto;
+    gap: 0;
+  }
+  .ss-title {
+    font-size: clamp(.6rem, 4.2vw, .95rem);
+    padding: 8px 14px;
+    margin-bottom: 6px;
+    line-height: 1.8;
+  }
+  .ss-sub {
+    font-size: clamp(.3rem, 2.2vw, .44rem);
+    margin-bottom: 10px;
+    line-height: 2.2;
+  }
+  /* 2×2 gift grid instead of 4-in-a-row */
+  .gg {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-bottom: 12px;
+    width: 100%;
+    max-width: 300px;
+  }
+  .gc {
+    min-width: unset;
+    padding: 8px 10px;
+  }
+  .gc .gd { font-size: .38rem; margin-bottom: 4px; }
+  .gc .gi { font-size: 1.2rem; }
+  .gc .gs { font-size: .34rem; margin-top: 4px; }
+  #playBtn {
+    padding: 10px 24px;
+    font-size: clamp(.42rem, 3vw, .62rem);
+  }
+  .ch { margin-top: 8px; font-size: .32rem; }
 }
 
 /* ── START SCREEN ── */
@@ -339,10 +380,10 @@ html, body {
 
   <div id="hud">
     <button id="homeBtn" onclick="goHome()">🏠</button>
-    <div class="hm" id="h4">🍄</div>
-    <div class="hm" id="h5">🍄</div>
-    <div class="hm" id="h6">🍄</div>
-    <div class="hm" id="h7">🍄</div>
+    <div class="hm" id="h0">🍄</div>
+    <div class="hm" id="h1">🍄</div>
+    <div class="hm" id="h2">🍄</div>
+    <div class="hm" id="h3">🍄</div>
   </div>
 
   <div id="ss">
@@ -370,7 +411,7 @@ html, body {
   <div id="tc">
     <div class="tg">
       <div class="tb" id="tbL">◀</div>
-  2   <div class="tb" id="tbR">▶</div>
+      <div class="tb" id="tbR">▶</div>
     </div>
     <div class="tg">
       <div class="tb" id="tbJ">⬆</div>
@@ -400,7 +441,7 @@ const GIFTS = [
     label: 'Oct 8',
     emoji: '🎁',
     title: 'Surprise #1 Unlocked! 🍄',
-    msg: 'Your very first birthday countdown gift! 🎉\n\n✏️ [Replace with your gift message!]'
+    msg: 'A little something to carry your adventures! 🎮\n\nI got you a Gameboy keychain — because you love the classics and I love you. 🕹️'
   },
   {
     id: 1,
@@ -408,7 +449,7 @@ const GIFTS = [
     label: 'Oct 9',
     emoji: '⭐',
     title: 'Surprise #2 Unlocked! 🍄',
-    msg: 'Getting closer to your birthday! 💛\n\n✏️ [Replace with gift #2!]'
+    msg: 'Surprise number two! 🎨\n\nI got you sketch colors — for all the art that lives inside you. Keep creating beautiful things. 🖍️'
   },
   {
     id: 2,
@@ -465,7 +506,7 @@ function buildGrid() {
     d.innerHTML = `
       <div class="gd">${g.label}</div>
       <div class="gi">${got?'✅':ul?g.emoji:'🔒'}</div>
-      <div class="gs">${got?'Found!':ul?'Ready!':'in '+daysUntil(g.unlock)+'d'}|/div>`;
+      <div class="gs">${got?'Found!':ul?'Ready!':'in '+daysUntil(g.unlock)+'d'}</div>`;
     el.appendChild(d);
   });
 }
@@ -590,7 +631,7 @@ function doJump() {
   sfxJump(); buzz(18);
 }
 
-// ══════════════════════════════════════════
+// ═════════════════════════════════
 // CAMERA
 // ══════════════════════════════════════════
 let camX = 0;
@@ -614,7 +655,7 @@ function update() {
   P.onGround = false;
 
   for(const pl of PLATS) {
-    if(P.x+P.w > pl.x && P.x < pl.x+pl.w) {
+    if(P.x+p.w > pl.x && P.x < pl.x+pl.w) {
       const f = P.y + P.h;
       if(f >= pl.y && f <= pl.y+pl.h+5 && P.vy >= 0) {
         P.y = pl.y - P.h; P.vy = 0; P.onGround = true; P.jumping = false;
@@ -685,7 +726,7 @@ function dHills() {
   HILLS.forEach(h => {
     const hx = h.x - camX*0.2;
     if(hx<-h.r-10||hx>CW+h.r+10) return;
-    ctx.fillStyle='#5faa3a';
+  2 ctx.fillStyle='#5faa3a';
     ctx.beginPath(); ctx.arc(hx,GY,h.r,Math.PI,0); ctx.closePath(); ctx.fill();
     ctx.fillStyle='#78c84e';
     ctx.beginPath(); ctx.arc(hx,GY,h.r*.62,Math.PI,0); ctx.closePath(); ctx.fill();
@@ -721,7 +762,7 @@ function dPlats() {
   for(let i=1;i<PLATS.length;i++) {
     const p=PLATS[i]; const sx=p.x-camX;
     if(sx>CW+20||sx+p.w<-20) continue;
-    ctx.fillStyle='#5b9e38'; ctx.fillRect(sx,p.y,p.w,7);
+  2 ctx.fillStyle='#5b9e38'; ctx.fillRect(sx,p.y,p.w,7);
     ctx.fillStyle='#6cbf42'; ctx.fillRect(sx+2,p.y+1,p.w-4,4);
     ctx.fillStyle='#c49a46'; ctx.fillRect(sx,p.y+7,p.w,p.h-7);
     ctx.strokeStyle='#8a6522'; ctx.lineWidth=1; ctx.strokeRect(sx,p.y,p.w,p.h);
@@ -780,7 +821,7 @@ const CAP_COLS = ['#e03030','#d4922a','#2899c8','#8850d0'];
 function dMush(m, t) {
   const gift = GIFTS[m.gId];
   const sx = m.x - camX;
-  if(sx>CW+30||sx<-30) return;
+  if(sx>CV+30||sx<-30) return;
 
   const ul = isUnlocked(gift);
   const bob = m.got ? 0 : Math.sin(t*.004+m.gId*1.4)*3.5;
@@ -792,289 +833,331 @@ function dMush(m, t) {
   ctx.fillStyle='rgba(0,0,0,.12)';
   ctx.beginPath(); ctx.ellipse(sx+13,sy+22,12,4,0,0,Math.PI*2); ctx.fill();
 
-  ctx.fillStyle = m.got ? '#444' : ul ? CAP_COLS[m.gId] : '#4a4a4a';
+  ctx.fillStyle = m.got ? '444' : ul ? CAP_COLS[m.gId] : '#4a4a4a';
   ctx.beginPath(); ctx.arc(sx+13,sy+13,13,Math.PI,0); ctx.closePath(); ctx.fill();
 
   if(ul && !m.got) {
     ctx.fillStyle='rgba(255,255,255,.9)';
-    [[sx+8,sy+10,3.8],[sx+18,sy+8,3],[sx+15,sy+16,2.2]].forEach(([x,y,r])=>{
-      ctx.beginPath(); ctx.arc(x,y,r,0,Math.PI*2); ctx.fill();
-    });
-    ctx.globalAlpha = .6+Math.sin(t*.007)*.4;
-    ctx.fillStyle='#FFD700';
-    ctx.font='bold 7px monospace';
-    ctx.textAlign='center';
-    ctx.fillText('GRAB!',sx+13,sy-5);
-    ctx.textAlign='left';
-    ctx.globalAlpha=1;
-  }
+    [[sx+8,sy+10,3.8],[sx+18,sy+8,3],[sx+15,sy+16,2.2]].forEach(([x,y*r])=>{
+      ctx.beginPath(); ctx�\��K�X]�J��N����[
 
-  if(m.got) {
-    ctx.fillStyle='#777'; ctx.font='10px sans-serif';
-    ctx.textAlign='center'; ctx.fillText('✓',sx+13,sy-3); ctx.textAlign='left';
-    return;
-  }
-  if(!ul) {
-    ctx.font='13px sans-serif'; ctx.textAlign='center';
-    ctx.fillText('🔒',sx+13,sy-3);
-    ctx.fillStyle='rgba(255,255,255,.75)'; ctx.font='bold 7px monospace';
-    ctx.fillText(daysUntil(gift.unlock)+'d',sx+13,sy+36);
-    ctx.textAlign='left';
-    if(m.sl) {
-      ctx.fillStyle='rgba(0,0,0,.88)'; ctx.fillRect(sx-42,sy-50,110,30);
-      ctx.fillStyle='#FFD700'; ctx.font='bold 7px monospace';
-      ctx.textAlign='center';
-      ctx.fillText('Unlocks '+gift.label+'!',sx+13,sy-29);
-      ctx.textAlign='left';
-    }
-  }
-}
+NJN���ؘ[[HH���X]��[�
+��
+�J�����[�[OI�ё�
+�	����۝I؛�
+�[ۛ��X�I���^[YۏI��[�\�����[^
+	�ԐP�I��
+�L��KMJN��^[YۏI�Y�	����ؘ[[OLNB��Y�K���
+H���[�[OI����������۝I�L�[��\�\�Y����^[YۏI��[�\������[^
+	��$���
+�L��KL�N���^[YۏI�Y�	��]\��B�Y�][
+H���۝I�L��[��\�\�Y�����^[YۏI��[�\�����[^
+	�'�$���
+�L��KL�N���[�[OIܙؘJ�MK�MK�MK��JI�����۝I؛�
+�[ۛ��X�I����[^
+^\�[�[
+�Y��[����J��	��
+�L��J�͊N��^[YۏI�Y�	�Y�K��
+H���[�[OIܙؘJ�
+I�����[�X�
+�M��KMLLL�
+N���[�[OI�ё�
+�	�����۝I؛�
+�[ۛ��X�I���^[YۏI��[�\�����[^
+	�[�����	���Y��X�[
+��I��
+�L��KL�JN��^[YۏI�Y�	�B�B�B����8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d����U�8�%PT�S��8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d��[��[ۈX\�[�
+H�ۜ��T�X�[V�OT�N���]�J
+NY��\�
+H����[��]J�
+���
+N�����[JLKJN�X\�[�]
+�K���[YJN�B�[�HX\�[�]
+��K���[YJN���\�ܙJ
+NB���[��[ۈX\�[�]
+K�JH���[�[OI��X��	��ۜ��V��
+�J��KLK�
+�MKJ��KLWK���
+�KJ���LLWK�
+�M�J��KKWWK���
+�KJ���LWK�
+�M�J��LWWK���
+̋J�͋KL�K�
+�M�J�͋KL�WK�N
+�ٚW_��JK��ܑXX�
 
-// ══════════════════════════════════════════
-// DRAW — MARIO
-// ══════════════════════════════════════════
-function dMario() {
-  const sx=P.x-camX, sy=P.y;
-  ctx.save();
-  if(P.dir<0) { ctx.translate(sx+P.w,0); ctx.scale(-1,1); marioAt(0,sy,P.frame); }
-  else marioAt(sx,sy,P.frame);
-  ctx.restore();
-}
+�K��JOO����[�X�
+K��
+JN����[�[OI��؍YX�	����[�X�
+
+�J̍�M�N����[�X�
+
+�J�NL�L
+N���[�X�
+
+�KJ�N
+L�N����[�X�
+
+�NKJ�N
+L�N����[�[OI����L������[�X�
+
+�J�N�L
+N���[�X�
+
+�J̌�
+K
+N����[�X�
+
+̌�J̌�
+K
+N����[�[OI�ٍX͎L	�Y��OOOL�H����[�X�
+L�J�MK
+�
+�N����[�X�
+
+̍J�MK
+�
+�N�B�[�HY��OOOLJH����[�X�
+L�J̌
+�
+JN����[�X�
+
+̍J̍K
+�
+JN�B�[�H����[�X�
+L�J̍K
+�
+JN����[�X�
+
+̍J̍K
+�
+JN�B�����[�[OI�ٍX͎L	�����[�X�
+
+�KJ�NM
+N���[�[OI��	�����[�X�
+
+�KJ�LK��N����[�X�
+
+�M�J�LK��N���[�[OI�ٙ�������[�X�
+
+�LJ�LKKJN����[�X�
+
+�M�J�LKKJN���[�[OI��NL
+�	�����[�X�
+
+�L�J�M
+K
+N���[�[OI��X��	����[�X�
+
+��J�MK
+K
+N����[�X�
+
+�M�J�MK
+K
+N���[�X�
+
+��J�NM
+N���[�X�
+
+�KJ�K
+
+JN����[�X�
+
+�NKJ�K
+
+JN���[�[OI����L�������[�X�
+
+�KJ���
+JN���[�X�
+
+��K��
+�N���[�[OI�ё�
+�	����[�X�
+
+�KJ�K�
+JN����[�X�
+
+�M�J�K�
+JN����[�X�
+
+�LKJ̋
+��NB���[��[ۈ\��
+H\�˙�ܑXX�
+O����ؘ[[O\�����[�[O\�����[�X�
+�X�[V\��̋�K\��̋����NJN���ؘ[[OLNB���[��[ۈ��ܙ\��
+H�ۜ����SX]�Z[�K����P��JN�ۜ��P��NNM��OM����[�[OIܙؘJ�JI�����[�X�
+��KN
+N���[�[OI�ё�
+�	�����[�X�
+��KN
+����
+N������T�[OIܙؘJ�MK�MK�MK��I����[�U�YLN�������T�X�
+��KN
+NB����8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d���Q���8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d��[��[ۈ\]RQ
 
-function marioAt(x,y,fi) {
-  ctx.fillStyle='#5b2800';
-  const sh=[
-    [[x+2,y+36,9,13],[x+15,y+38,9,10]],
-    [[x+1,y+37,10,11],[x+16,y+39,9,9]],
-    [[x+5,y+37,8,11],[x+17,y+38,8,11]],
-    [[x+2,y+36,9,13],[x+17,y+36,9,13]],
-  ];
-  (sh[fi]||sh[0]).forEach(([a,b,c,d])=>ctx.fillRect(a,b,c,d));
+H�Q�˙�ܑXX�
 
-  ctx.fillStyle='#3b5ec0';
-  ctx.fillRect(x+4,y+24,20,16); ctx.fillRect(x+8,y+18,12,10);
-  ctx.fillRect(x+5,y+18,4,13); ctx.fillRect(x+19,y+18,4,13);
+�JHO��ۜ�[Y��[Y[���][[Y[��RY
+	�	��JNY�[
+H[��\��\�����J	���	�\���
+�Q���WJJNJNB�\]RQ
 
-  ctx.fillStyle='#c0392b';
-  ctx.fillRect(x+4,y+18,20,10);
-  ctx.fillRect(x+0,y+22,5,8); ctx.fillRect(x+23,y+22,5,8);
+N���8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d����Q�S�S���8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d�]S�[�H�[�N��[��[ۈ�[�[�[
+�Y�
+H�[��[��Y�[�N�S�[�]�YN��[Y[���][[Y[��RY
+	��I�K�^�۝[�H�Y��[[ښN��[Y[���][[Y[��RY
+	��	�K�^�۝[�H�Y��]N��[Y[���][[Y[��RY
+	��\���K�^�۝[�H�Y��\����[Y[���][[Y[��RY
+	��I�K��\��\��Y
+	�ۉ�N][���ۙ�]J�Y��Y
+NB���[��[ۈ���S[�[
 
-  ctx.fillStyle='#f5c690';
-  if(fi===3) { ctx.fillRect(x-2,y+15,6,6); ctx.fillRect(x+24,y+15,6,6); }
-  else if(fi===1) { ctx.fillRect(x-2,y+20,6,5); ctx.fillRect(x+24,y+25,6,5); }
-  else { ctx.fillRect(x-2,y+25,6,5); ctx.fillRect(x+24,y+25,6,5); }
+H��[Y[���][[Y[��RY
+	��I�K��\��\���[[ݙJ	�ۉ�NS�[�Y�[�N��[��[��]�YN���ۙ�]J
+N��Z[ܚY
 
-  ctx.fillStyle='#f5c690'; ctx.fillRect(x+5,y+8,18,14);
-  ctx.fillStyle='#000'; ctx.fillRect(x+9,y+11,3,3); ctx.fillRect(x+16,y+11,3,3);
-  ctx.fillStyle='#fff'; ctx.fillRect(x+10,y+11,1,1); ctx.fillRect(x+17,y+11,1,1);
-  ctx.fillStyle='#e8a060'; ctx.fillRect(x+12,y+14,5,4);
-  ctx.fillStyle='#5b2800';
-  ctx.fillRect(x+7,y+15,5,4); ctx.fillRect(x+16,y+15,5,4);
-  ctx.fillRect(x+7,y+18,14,4);
-  ctx.fillRect(x+5,y+5,4,5); ctx.fillRect(x+19,y+5,4,5);
-  ctx.fillStyle='#c0392b'; ctx.fillRect(x+1,y+4,26,5);
-  ctx.fillRect(x+3,y,22,7);
-  ctx.fillStyle='#FFD700';
-  ctx.fillRect(x+9,y+1,2,5); ctx.fillRect(x+17,y+1,2,5); ctx.fillRect(x+11,y+2,6,3);
-}
+N�\]Y\�[�[X][ۑ��[YJ��
+NB����8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d����ӑ�UB���8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d��ۜ��݈H��[Y[���][[Y[��RY
+	�٘��N�ۜ���H�݋��]�۝^
+	̙	�N�[��[ۈސ��
+H��݋��Y]�[��˚[��\��Y��݋�ZY�]�[��˚[��\�ZY��B�ސ��
+N��[��˘Y]�[�\�[�\�	ܙ\�^�I�ސ��N�]�\��V�Kܝ[�Y�[�K�Y��ۜ�����V��ё�
+�	�	�ё������	��P��	�	����L�PI�	�ٙ���	�͎Q�I�	�ю�	�N��[��[ۈ][���ۙ�]J�Y
+H�\��V�N�ܝ[�]�YN�ۜ�X�V���L��	�	��
+L��I�	�̎NX�	�	��
+L	�V��YN�ۜ����Vˋ������X�N�܊]OL�OM��J��H�\�˜\�
+��X]��[��J
+J��݋��YN�L�SX]��[��J
+J������X]��[��J
+KK�JJ�K�K�N���X]��[��J
+J��K�΍J�X]��[��J
+J�L���X]��[��J
+J�X]�J������X]��[��J
+KK�JJ���K�Θ����X]���܊X]��[��J
+J���˛[��
+WK���X]��[��J
+O���܉Ή��JNB�[�[P�ۙ�
+NB��[��[ۈ[�[P�ۙ�
+HY�Xܝ[�H�]\������X\��X�
+�݋��Y�݋�ZY�
+N�\�˙�ܑXX�
+O��
+�\����J�\��N���J�K�
+�����
+�\�������]�J
+N�����[��]J��JN������]J���
+N����[�[O\��Y���OOI܉�H����[�X�
+\��̋\�������̊N[�H�����Y�[�]
 
-function dParts() {
-  parts.forEach(p => {
-    ctx.globalAlpha=p.l; ctx.fillStyle=p.c;
-    ctx.fillRect(p.x-camX-p.s/2, p.y-p.s/2, p.s, p.s);
-  });
-  ctx.globalAlpha=1;
-}
+N����\����̋X]�J��N�����[
 
-function dProgress() {
-  const prog=Math.min(1,P.x/(WW-CW));
-  const bx=CW-98-6, by=7;
-  ctx.fillStyle='rgba(0,0,0,.5)'; ctx.fillRect(bx,by,98,8);
-  ctx.fillStyle='#FFD700'; ctx.fillRect(bx,by,98*prog,8);
-  ctx.strokeStyle='rgba(255,255,255,.2)'; ctx.lineWidth=1; ctx.strokeRect(bx,by,98,8);
-}
+N�B�����\�ܙJ
+NJN�\��X�\�˙�[\�O��O�݋�ZY�
+��
+N�Y�\�\]Y\�[�[X][ۑ��[YJ[�[P�ۙ�NB��[��[ۈ���ۙ�]J
+Hܝ[�Y�[�N��[��[[�[X][ۑ��[YJ�Y�N����X\��X�
+�݋��Y�݋�ZY�
+NB����8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d�����S����8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d�]X��[��[ۈ�]P�
+HY�XX�HX�[�]��[��ː]Y[��۝^�[��˝�X��]]Y[��۝^
+J
+N�]\��X�B��[��[ۈٞ�[\
 
-// ══════════════════════════════════════════
-// HUD
-// ══════════════════════════════════════════
-function updateHUD() {
-  GIFTS.forEach((_,i) => {
-    const el=document.getElementById('h'+i);
-    if(el) el.classList.toggle('got', isGot(GIFTS[i]));
-  });
-}
-updateHUD();
+^�H�ۜ�OY�]P�
+K�XK�ܙX]S���[]܊
+K�XK�ܙX]Q�Z[�
+N˘�ۛ�X�
+�N�˘�ۛ�X�
+K�\�[�][ۊN˙��\]Y[��K��]�[YP][YJ��K��\��[�[YJN˙��\]Y[��K�^ۙ[�X[�[\՘[YP][YJ
+L�K��\��[�[YJˌLJN˙�Z[���]�[YP][YJ���K��\��[�[YJN˙�Z[��^ۙ[�X[�[\՘[YP][YJ�KK��\��[�[YJˌL�N˜�\�
 
-// ══════════════════════════════════════════
-// GIFT MODAL
-// ══════════════════════════════════════════
-let mOpen = false;
+N�˜��
+K��\��[�[YJˌL�NX�]�
+J^�B�B��[��[ۈٞ��[�
+^�H�ۜ�OY�]P�
+N��LMLLMLMK��ܑXX�
 
-function openModal(gift) {
-  running=false; mOpen=true;
-  document.getElementById('ge').textContent   = gift.emoji;
-  document.getElementById('gt').textContent   = gift.title;
-  document.getElementById('gmsg').textContent = gift.msg;
-  document.getElementById('gm').classList.add('on');
-  launchConfetti(gift.id);
-}
+�JOO��ۜ��XK�ܙX]S���[]܊
+K�XK�ܙX]Q�Z[�
+N˝\OI��]X\�I��˘�ۛ�X�
+�N�˘�ۛ�X�
+K�\�[�][ۊN˙��\]Y[��K��[YOY��ۜ�XK��\��[�[YJ�J��
+�N˙�Z[���]�[YP][YJ�N
+N˙�Z[��^ۙ[�X[�[\՘[YP][YJ�K
+ˌL�N˜�\�
+
+N�˜��
+
+ˌL�NJNX�]�
+J^�B�B����8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d���TP���8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d��[��[ۈ�^��]\��H�H�Y��]�Y�]܋��X��]JH�]�Y�]܋��X��]J]\��N�H�]�
+J^�B�B����8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d�������T����8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d��[��[ۈ[�]���
+H�ۜ�\�[\�H�]�T��X\��\�[\��[��˛��][ۋ��X\��
+NY�\\�[\˚\�	ۙ���JH�]\����ۜ��\�H��[Y[���][[Y[��RY
+	ۙ���\�	�N�ۜ��\��[H��[Y[���][[Y[��RY
+	ۙ���\���N�\���[K�\�^HH	ٛ^	������][��8�d�\��܊]OL�OM�J��H�ۜ��H��[Y[��ܙX]Q[[Y[�
+	�]��N˘�\�Ә[YHH	ۙ��\�\��˝^�۝[�H���d	�	��*	�	�'�'��	�'���V�IMN˜�[K�Y�H
 
-function closeModal() {
-  document.getElementById('gm').classList.remove('on');
-  mOpen=false; running=true;
-  stopConfetti(); buildGrid();
-  requestAnimationFrame(loop);
-}
+J�X]��[��J
+J�L
+J��I�˜�[K�[�[X][ۑ\�][ۈH
+��X]��[��J
+J�
+J����˜�[K�[�[X][ۑ[^HH
+SX]��[��J
+J�JJ����˜�[K��۝�^�HH
+���X]��[��J
+J��
+J�ܙ[I��\��[�\[��[
+�NB�����[X��]ܞH�^��ۈ���\\��]�[��^���
+�
+��JN��ۜ�\�Z\��H
 
-// ══════════════════════════════════════════
-// CONFETTI
-// ══════════════════════════════════════════
-const ccv  = document.getElementById('cfc');
-const cctx = ccv.getContext('2d');
-function szCC() { ccv.width=window.innerWidth; ccv.height=window.innerHeight; }
-szCC(); window.addEventListener('resize', szCC);
+HO��^����JN�\���[K��[��][ۈH	��X�]H�
+\���\���[K��X�]HH	�	��][Y[�]
 
-let cparts=[], crun=false, caf;
-const CCOLS=['#FFD700','#FF6B6B','#4ECDC4','#C792EA','#fff','#68EF8A','#F8B400'];
 
-function launchConfetti(gId) {
-  cparts=[]; crun=true;
-  const ac=['#e03030','#d4922a','#2899c8','#8850d0'][gId];
-  const cols=[...CCOLS,ac];
-  for(let i=0;i<160;i++) {
-    cparts.push({
-      x:Math.random()*ccv.width, y:-20-Math.random()*260,
-      vx:(Math.random()-.5)*5.5, vy:2+Math.random()*4.5,
-      s:5+Math.random()*10, rot:Math.random()*Math.PI*2,
-      rv:(Math.random()-.5)*.25,
-      c:cols[Math.floor(Math.random()*cols.length)],
-      sh:Math.random()>.4?'r':'c'
-    });
-  }
-  animConf();
-}
-function animConf() {
-  if(!crun) return;
-  cctx.clearRect(0,0,ccv.width,ccv.height);
-  cparts.forEach(p => {
-    p.x+=p.vx; p.y+=p.vy; p.vy+=.07; p.rot+=p.rv;
-    cctx.save(); cctx.translate(p.x,p.y); cctx.rotate(p.rot);
-    cctx.fillStyle=p.c;
-    if(p.sh==='r') cctx.fillRect(-p.s/2,-p.s/4,p.s,p.s/2);
-    else { cctx.beginPath(); cctx.arc(0,0,p.s/2,0,Math.PI*2); cctx.fill(); }
-    cctx.restore();
-  });
-  cparts=cparts.filter(p=>p.y<ccv.height+30);
-  caf=requestAnimationFrame(animConf);
-}
-function stopConfetti() {
-  crun=false; cancelAnimationFrame(caf);
-  cctx.clearRect(0,0,ccv.width,ccv.height);
-}
+HO���\���[K�\�^HH	ۛۙI��K
 
-// ══════════════════════════════════════════
-// SOUND
-// ══════════════════════════════════════════
-let ac;
-function getAC() {
-  if(!ac) ac=new(window.AudioContext||window.webkitAudioContext)();
-  return ac;
-}
-function sfxJump(){
-  try {
-    const a=getAC(),o=a.createOscillator(),g=a.createGain();
-    o.connect(g); g.connect(a.destination);
-    o.frequency.setValueAtTime(260,a.currentTime);
-    o.frequency.exponentialRampToValueAtTime(520,a.currentTime+.11);
-    g.gain.setValueAtTime(.22,a.currentTime);
-    g.gain.exponentialRampToValueAtTime(.001,a.currentTime+.13);
-    o.start(); o.stop(a.currentTime+.13);
-  }catch(e){}
-}
-function sfxCoin(){
-  try {
-    const a=getAC();
-    [750,950,1150,1400].forEach((f,i)=>{
-      const o=a.createOscillator(),g=a.createGain();
-      o.type='square'; o.connect(g); g.connect(a.destination);
-      o.frequency.value=f;
-      const t=a.currentTime+i*.075;
-      g.gain.setValueAtTime(.18,t);
-      g.gain.exponentialRampToValueAtTime(.001,t+.12);
-      o.start(t); o.stop(t+.12);
-    });
-  }catch(e){}
-}
+�
+NN�\��Y]�[�\�[�\�	��X��\�	�\�Z\���ۘ�N��YK\��]�N��Y_JN�\��Y]�[�\�[�\�	��X���\�Z\���ۘ�N��Y_JNJJ
+N���8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d����SQH�����8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d�]�[��[��H�[�N��[��[ۈ��
+
+HY�\�[��[��H�]\��\]J
+N�X��\��
+N���X\��X�
+���
+N��
+N�[�
+N���Y�
+NX�܊
+N�\\�
+Nܛ�[�
 
-// ══════════════════════════════════════════
-// HAPTICS
-// ══════════════════════════════════════════
-function buzz(pattern) {
-  try { if(navigator.vibrate) navigator.vibrate(pattern); } catch(e){}
-}
+N�]�
+NUT�˙�ܑXX�
+OO�]\�
+K
+JN\��
+N��Y�
+N�X\�[�
+N���ܙ\��
+N�\]Y\�[�[X][ۑ��[YJ��
+NB�����K\�[�\�
+�Z[��\��ܙY[�B��[��[ۈ�J
+^���X\��X�
+���
+N��
+N�[�
+N���Y�
+NX�܊
+N�\\�
+Nܛ�[�
 
-// ══════════════════════════════════════════
-// NFC SPLASH
-// ══════════════════════════════════════════
-(function initNFC() {
-  const params = new URLSearchParams(window.location.search);
-  if(!params.has('nfc')) return;
-
-  const splash = document.getElementById('nfcSplash');
-  const starsEl = document.getElementById('nfcStars');
-  splash.style.display = 'flex';
-
-  // Floating ⭐ stars
-  for(let i=0;i<14;i++) {
-    const s = document.createElement('div');
-    s.className = 'nfc-star';
-    s.textContent = ['⭐','✨','🌟','💫'][i%4];
-    s.style.left = (5+Math.random()*90)+'%';
-    s.style.animationDuration = (3+Math.random()*4)+'s';
-    s.style.animationDelay = (-Math.random()*5)+'s';
-    s.style.fontSize = (.7+Math.random()*.8)+'rem';
-    starsEl.appendChild(s);
-  }
-
-  // Celebratory buzz on NFC tap arrival
-  buzz([80, 60, 80, 60, 200]);
-
-  const dismiss = () => {
-    buzz([30]);
-    splash.style.transition = 'opacity .45s';
-    splash.style.opacity = '0';
-    setTimeout(() => { splash.style.display = 'none'; }, 460);
-  };
-  splash.addEventListener('touchstart', dismiss, {once:true, passive:true});
-  splash.addEventListener('click', dismiss, {once:true});
-})();
-
-// ══════════════════════════════════════════
-// GAME LOOP
-// ══════════════════════════════════════════
-let running = false;
-
-function loop(t) {
-  if(!running) return;
-  update(); tickParts();
-  ctx.clearRect(0,0,CW,CH);
-  dBg(); dHills(); dClouds(t);
-  dDecor(t); dPipes();
-  dGround(); dPlats();
-  MUSHS.forEach(m=>dMush(m,t));
-  dParts(); dFlag(t); dMario(); dProgress();
-  requestAnimationFrame(loop);
-}
-
-// Pre-render (behind start screen)
-(function pre(){
-  ctx.clearRect(0,0,CW,CH);
-  dBg(); dHills(); dClouds(0);
-  dDecor(0); dPipes();
-  dGround(); dPlats();
-  MUSHS.forEach(m=>dMush(m,0));
-  dFlag(0); dMario();
-})();
-</script>
-</body>
-</html>
+N�]�
+NUT�˙�ܑXX�
+OO�]\�
+K
+JN�Y�
+N�X\�[�
+NJJ
+N��ܚ\��؛�O���[�
