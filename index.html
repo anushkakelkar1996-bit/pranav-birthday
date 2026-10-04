@@ -11,7 +11,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Bday Quest">
-<link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%230a0a14'/><text y='70' font-size='70' x='12'>🍄</text></svg>">
+<link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%230a0a14'/><text y='70' font-size='70' x='12'>ð</text></svg>">
 <style>
 :root { color-scheme: dark; }
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -43,7 +43,7 @@ html, body {
   image-rendering: crisp-edges;
 }
 
-/* ── PORTRAIT MOBILE: fill full screen ── */
+/* ââ PORTRAIT MOBILE: fill full screen ââ */
 @media (orientation: portrait) and (max-width: 768px) {
   body { justify-content: flex-start; }
   #wrap {
@@ -75,7 +75,7 @@ html, body {
     margin-bottom: 10px;
     line-height: 2.2;
   }
-  /* 2×2 gift grid instead of 4-in-a-row */
+  /* 2Ã2 gift grid instead of 4-in-a-row */
   .gg {
     display: grid !important;
     grid-template-columns: 1fr 1fr;
@@ -98,7 +98,7 @@ html, body {
   .ch { margin-top: 8px; font-size: .32rem; }
 }
 
-/* ── START SCREEN ── */
+/* ââ START SCREEN ââ */
 #ss {
   position: absolute; inset: 0;
   background: #5c94fc;
@@ -217,7 +217,7 @@ html, body {
   text-shadow: 1px 1px 0 #000;
 }
 
-/* ── HUD ── */
+/* ââ HUD ââ */
 #hud {
   position: absolute; top: 6px; right: 6px;
   display: flex; gap: 5px; z-index: 5; align-items: center;
@@ -240,7 +240,7 @@ html, body {
 }
 .hm.got { background: rgba(255,215,0,.22); border-color: #FFD700; }
 
-/* ── GIFT MODAL ── */
+/* ââ GIFT MODAL ââ */
 #gm {
   display: none; position: absolute; inset: 0;
   background: rgba(0,0,0,.87);
@@ -279,7 +279,7 @@ html, body {
 }
 .gbc:hover { background: #ffc107; }
 
-/* ── TOUCH CONTROLS ── */
+/* ââ TOUCH CONTROLS ââ */
 #tc {
   position: absolute; bottom: 0; left: 0; right: 0;
   display: none; justify-content: space-between; align-items: flex-end;
@@ -313,7 +313,7 @@ html, body {
 }
 #tbJ.pressed, #tbJ:active { background: rgba(220,50,50,.6); }
 
-/* ── NFC SPLASH ── */
+/* ââ NFC SPLASH ââ */
 #nfcSplash {
   position: absolute; inset: 0;
   background: linear-gradient(160deg, #1a1a3a 0%, #0a0a14 100%);
@@ -366,7 +366,7 @@ html, body {
   to   { transform: translateY(-10%) rotate(360deg); opacity: 0; }
 }
 
-/* ── CONFETTI ── */
+/* ââ CONFETTI ââ */
 #cfc {
   position: fixed; inset: 0;
   pointer-events: none; z-index: 30;
@@ -380,11 +380,11 @@ html, body {
   <canvas id="gc" width="800" height="500"></canvas>
 
   <div id="hud">
-    <button id="homeBtn" onclick="goHome()">🏠</button>
-    <div class="hm" id="h0">🍄</div>
-    <div class="hm" id="h1">🍄</div>
-    <div class="hm" id="h2">🍄</div>
-    <div class="hm" id="h3">🍄</div>
+    <button id="homeBtn" onclick="goHome()">ð </button>
+    <div class="hm" id="h0">ð</div>
+    <div class="hm" id="h1">ð</div>
+    <div class="hm" id="h2">ð</div>
+    <div class="hm" id="h3">ð</div>
   </div>
 
   <div id="ss">
@@ -393,93 +393,54 @@ html, body {
     <div class="ss-qb" style="bottom:60px;right:10%">?</div>
     <div class="ss-qb" style="bottom:100px;left:22%">?</div>
     <div class="ss-qb" style="bottom:100px;right:22%">?</div>
-    <div class="ss-title">🎂 Happy 30 Pranav! 🎂</div>
-    <div class="ss-sub">30 years of not having a Game Boy 🎮<br><br>Since your biggest love language is gifts — here's a game to get yours!</div>
+    <div class="ss-title">ð Happy 30 Pranav! ð</div>
+    <div class="ss-sub">30 years of not having a Game Boy ð®<br><br>Since your biggest love language is gifts â here's a game to get yours!</div>
     <div class="gg" id="gg"></div>
-    <button id="playBtn" onclick="startGame()">▶ PLAY</button>
-    <div class="ch">← → MOVE &nbsp;|&nbsp; ↑ or SPACE to JUMP</div>
+    <button id="playBtn" onclick="startGame()">â¶ PLAY</button>
+    <div class="ch">â â MOVE &nbsp;|&nbsp; â or SPACE to JUMP</div>
   </div>
 
   <div id="gm">
     <div class="gb">
-      <img class="gbe" id="ge" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCIgc2hhcGUtcmVuZGVyaW5nPSJjcmlzcEVkZ2VzIj4KICA8IS0tIFNoYWRvdyAtLT4KICA8cmVjdCB4PSI4IiB5PSI1OCIgd2lkdGg9IjQ4IiBoZWlnaHQ9IjQiIGZpbGw9IiMxYTBhMDAiIG9wYWNpdHk9IjAuMyIvPgoKICA8IS0tIEJveCBib2R5IC0tPgogIDxyZWN0IHg9IjgiIHk9IjMyIiB3aWR0aD0iNDgiIGhlaWdodD0iMjgiIGZpbGw9IiNlODM0MGEiLz4KICA8IS0tIEJveCBib2R5IHNoYWRpbmcgKHJpZ2h0KSAtLT4KICA8cmVjdCB4PSI0OCIgeT0iMzIiIHdpZHRoPSI4IiBoZWlnaHQ9IjI4IiBmaWxsPSIjYjUyNDBhIi8+CiAgPCEtLSBCb3ggYm9keSBoaWdobGlnaHQgKGxlZnQpIC0tPgogIDxyZWN0IHg9IjgiIHk9IjMyIiB3aWR0aD0iNCIgaGVpZ2h0PSIyOCIgZmlsbD0iI2ZmNjY0NCIvPgogIDwhLS0gQm94IGJvZHkgYm90dG9tIC0tPgogIDxyZWN0IHg9IjgiIHk9IjU2IiB3aWR0aD0iNDgiIGhlaWdodD0iNCIgZmlsbD0iIzdhMTgwMCIvPgoKICA8IS0tIFZlcnRpY2FsIHJpYmJvbiBvbiBib3ggLS0+CiAgPHJlY3QgeD0iMjgiIHk9IjMyIiB3aWR0aD0iOCIgaGVpZ2h0PSIyOCIgZmlsbD0iI2Y3ZDAwMCIvPgogIDwhLS0gUmliYm9uIHNoYWRpbmcgLS0+CiAgPHJlY3QgeD0iMzMiIHk9IjMyIiB3aWR0aD0iMyIgaGVpZ2h0PSIyOCIgZmlsbD0iI2Q0YTgwMCIvPgogIDwhLS0gUmliYm9uIGhpZ2hsaWdodCAtLT4KICA8cmVjdCB4PSIyOCIgeT0iMzIiIHdpZHRoPSIyIiBoZWlnaHQ9IjI4IiBmaWxsPSIjZmZlOTVhIi8+CgogIDwhLS0gQm94IGxpZCAtLT4KICA8cmVjdCB4PSI0IiB5PSIyNCIgd2lkdGg9IjU2IiBoZWlnaHQ9IjEyIiBmaWxsPSIjZmY1NTI1Ii8+CiAgPCEtLSBMaWQgc2hhZGluZyAtLT4KICA8cmVjdCB4PSI1MiIgeT0iMjQiIHdpZHRoPSI4IiBoZWlnaHQ9IjEyIiBmaWxsPSIjY2MzMzEwIi8+CiAgPCEtLSBMaWQgaGlnaGxpZ2h0IC0tPgogIDxyZWN0IHg9IjQiIHk9IjI0IiB3aWR0aD0iNCIgaGVpZ2h0PSIxMiIgZmlsbD0iI2ZmNzc1NSIvPgogIDwhLS0gTGlkIHRvcCBlZGdlIC0tPgogIDxyZWN0IHg9IjQiIHk9IjI0IiB3aWR0aD0iNTYiIGhlaWdodD0iMyIgZmlsbD0iI2ZmNzc1NSIvPgogIDwhLS0gTGlkIGJvdHRvbSBlZGdlIC0tPgogIDxyZWN0IHg9IjQiIHk9IjMzIiB3aWR0aD0iNTYiIGhlaWdodD0iMyIgZmlsbD0iI2FhMjIwMCIvPgoKICA8IS0tIEhvcml6b250YWwgcmliYm9uIG9uIGxpZCAtLT4KICA8cmVjdCB4PSI0IiB5PSIyNyIgd2lkdGg9IjU2IiBoZWlnaHQ9IjYiIGZpbGw9IiNmN2QwMDAiLz4KICA8IS0tIFJpYmJvbiBzaGFkaW5nIG9uIGxpZCAtLT4KICA8cmVjdCB4PSI0IiB5PSIzMSIgd2lkdGg9IjU2IiBoZWlnaHQ9IjIiIGZpbGw9IiNkNGE4MDAiLz4KICA8IS0tIFJpYmJvbiBoaWdobGlnaHQgb24gbGlkIC0tPgogIDxyZWN0IHg9IjQiIHk9IjI3IiB3aWR0aD0iNTYiIGhlaWdodD0iMiIgZmlsbD0iI2ZmZTk1YSIvPgoKICA8IS0tIEJvdyBsZWZ0IGxvb3AgKG91dGVyKSAtLT4KICA8cmVjdCB4PSIxNCIgeT0iMTIiIHdpZHRoPSIxMiIgaGVpZ2h0PSIxNCIgZmlsbD0iI2Y3ZDAwMCIvPgogIDxyZWN0IHg9IjEyIiB5PSIxNCIgd2lkdGg9IjE0IiBoZWlnaHQ9IjEwIiBmaWxsPSIjZjdkMDAwIi8+CiAgPCEtLSBCb3cgbGVmdCBsb29wIChpbm5lciBob2xlKSAtLT4KICA8cmVjdCB4PSIxNiIgeT0iMTUiIHdpZHRoPSI2IiBoZWlnaHQ9IjciIGZpbGw9IiNjYzMzMTAiLz4KICA8IS0tIEJvdyBsZWZ0IHNoYWRpbmcgLS0+CiAgPHJlY3QgeD0iMjIiIHk9IjEyIiB3aWR0aD0iNCIgaGVpZ2h0PSIxNCIgZmlsbD0iI2Q0YTgwMCIvPgoKICA8IS0tIEJvdyByaWdodCBsb29wIChvdXRlcikgLS0+CiAgPHJlY3QgeD0iMzgiIHk9IjEyIiB3aWR0aD0iMTIiIGhlaWdodD0iMTQiIGZpbGw9IiNmN2QwMDAiLz4KICA8cmVjdCB4PSIzOCIgeT0iMTQiIHdpZHRoPSIxNCIgaGVpZ2h0PSIxMCIgZmlsbD0iI2Y3ZDAwMCIvPgogIDwhLS0gQm93IHJpZ2h0IGxvb3AgKGlubmVyIGhvbGUpIC0tPgogIDxyZWN0IHg9IjQyIiB5PSIxNSIgd2lkdGg9IjYiIGhlaWdodD0iNyIgZmlsbD0iI2NjMzMxMCIvPgogIDwhLS0gQm93IHJpZ2h0IGhpZ2hsaWdodCAtLT4KICA8cmVjdCB4PSIzOCIgeT0iMTIiIHdpZHRoPSI0IiBoZWlnaHQ9IjE0IiBmaWxsPSIjZmZlOTVhIi8+CgogIDwhLS0gQm93IGNlbnRlciBrbm90IC0tPgogIDxyZWN0IHg9IjI2IiB5PSIxNCIgd2lkdGg9IjEyIiBoZWlnaHQ9IjEwIiBmaWxsPSIjZmZlOTVhIi8+CiAgPHJlY3QgeD0iMjgiIHk9IjE2IiB3aWR0aD0iOCIgaGVpZ2h0PSI2IiBmaWxsPSIjZjdkMDAwIi8+CiAgPHJlY3QgeD0iMzAiIHk9IjE3IiB3aWR0aD0iNCIgaGVpZ2h0PSI0IiBmaWxsPSIjZDRhODAwIi8+CgogIDwhLS0gQm93IGxlZnQgdGFpbCAtLT4KICA8cmVjdCB4PSIxOCIgeT0iMjQiIHdpZHRoPSI2IiBoZWlnaHQ9IjYiIGZpbGw9IiNmN2QwMDAiLz4KICA8cmVjdCB4PSIxNiIgeT0iMjYiIHdpZHRoPSI0IiBoZWlnaHQ9IjQiIGZpbGw9IiNkNGE4MDAiLz4KCiAgPCEtLSBCb3cgcmlnaHQgdGFpbCAtLT4KICA8cmVjdCB4PSI0MCIgeT0iMjQiIHdpZHRoPSI2IiBoZWlnaHQ9IjYiIGZpbGw9IiNmN2QwMDAiLz4KICA8cmVjdCB4PSI0MiIgeT0iMjYiIHdpZHRoPSI0IiBoZWlnaHQ9IjQiIGZpbGw9IiNmZmU5NWEiLz4KCiAgPCEtLSBTdGFycyAvIHNwYXJrbGVzIC0tPgogIDxyZWN0IHg9IjIiIHk9IjgiIHdpZHRoPSI0IiBoZWlnaHQ9IjQiIGZpbGw9IiNmN2QwMDAiLz4KICA8cmVjdCB4PSI0IiB5PSI2IiB3aWR0aD0iNCIgaGVpZ2h0PSIyIiBmaWxsPSIjZjdkMDAwIi8+CiAgPHJlY3QgeD0iNCIgeT0iMTAiIHdpZHRoPSI0IiBoZWlnaHQ9IjIiIGZpbGw9IiNmN2QwMDAiLz4KCiAgPHJlY3QgeD0iNTYiIHk9IjQiIHdpZHRoPSI0IiBoZWlnaHQ9IjQiIGZpbGw9IiNmN2QwMDAiLz4KICA8cmVjdCB4PSI1OCIgeT0iMiIgd2lkdGg9IjQiIGhlaWdodD0iMiIgZmlsbD0iI2Y3ZDAwMCIvPgogIDxyZWN0IHg9IjU4IiB5PSI2IiB3aWR0aD0iNCIgaGVpZ2h0PSIyIiBmaWxsPSIjZjdkMDAwIi8+CgogIDxyZWN0IHg9IjAiIHk9IjQwIiB3aWR0aD0iMyIgaGVpZ2h0PSIzIiBmaWxsPSIjZmZmZmZmIiBvcGFjaXR5PSIwLjYiLz4KICA8cmVjdCB4PSI2MSIgeT0iNDQiIHdpZHRoPSIzIiBoZWlnaHQ9IjMiIGZpbGw9IiNmZmZmZmYiIG9wYWNpdHk9IjAuNiIvPgo8L3N2Zz4K" alt="gift">
+      <img class="gbe" id="ge" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCIgc2hhcGUtcmVuZGVyaW5nPSJjcmlzcEVkZ2VzIj4KICA8IS0tIFNoYWRvdyAtLT4KICA8cmVjdCB4PSI4IiB5PSI1OCIgd2lkdGg9IjQ4IiBoZWlnaHQ9IjQiIGZpbGw9IiMxYTBhMDAiIG9wYWNpdHk9IjAuMyIvPgoKICA8IS0tIEJveCBib2R5IC0tPgogIDxyZWN0IHg9IjgiIHk9IjMyIiB3aWR0aD0iNDgiIGhlaWdodD0iMjgiIGZpbGw9IiNlODM0MGEiLz4KICA8IS0tIEJveCBib2R5IHNoYWRpbmcgKHJpZ2h0KSAtLT4KICA8cmVjdCB4PSI0OCIgeT0iMzIiIHdpZHRoPSI4IiBoZWlnaHQ9IjI4IiBmaWxsPSIjYjUyNDBhIi8+CiAgPCEtLSBCb3ggYm9keSBoaWdobGlnaHQgKGxlZnQpIC0tPgogIDxyZWN0IHg9IjgiIHk9IjMyIiB3aWR0aD0iNCIgaGVpZ2h0PSIyOCIgZmlsbD0iI2ZmNjY0NCIvPgogIDwhLS0gQm94IGJvZHkgYm90dG9tIC0tPgogIDxyZWN0IHg9IjgiIHk9IjU2IiB3aWR0aD0iNDgiIGhlaWdodD0iNCIgZmlsbD0iIzdaMTgwMCIvPgoKICA8IS0tIFZlcnRpY2FsIHJpYmJvbiBvbiBib3ggLS0+CiAgPHJlY3QgeD0iMjgiIHk9IjMyIiB3aWR0aD0iOCIgaGVpZ2h0PSIyOCIgZmlsbD0iI2Y3ZDAwMCIvPgogIDwhLS0gUmliYm9uIHNoYWRpbmcgLS0+CiAgPHJlY3QgeD0iMzMiIHk9IjMyIiB3aWR0aD0iMyIgaGVpZ2h0PSIyOCIgZmlsbD0iI2Q0YTgwMCIvPgogIDwhLS0gUmliYm9uIGhpZ2hsaWdodCAtLT4KICA8cmVjdCB4PSIyOCIgeT0iMzIiIHdpZHRoPSIyIiBoZWlnaHQ9IjI4IiBmaWxsPSIjZmZlOTVhIi8+CgogIDwhLS0gQm94IGxpZCAtLT4KICA8cmVjdCB4PSI0IiB5PSIyNCIgd2lkdGg9IjU2IiBoZWlnaHQ9IjEyIiBmaWxsPSIjZmY1NTI1Ii8+CiAgPCEtLSBMaWQgc2hhZGluZyAtLT4KICA8cmVjdCB4PSI1MiIgeT0iMjQiIHdpZHRoPSI4IiBoZWlnaHQ9IjEyIiBmaWxsPSIjY2MzMzEwIi8+CiAgPCEtLSBMaWQgaGlnaGxpZ2h0IC0tPgogIDxyZWN0IHg9IjQiIHk9IjI0IiB3aWR0aD0iNCIgaGVpZ2h0PSIxMiIgZmlsbD0iI2ZmNzc1NSIvPgogIDwhLS0gTGlkIHRvcCBlZGdlIC0tPgogIDxyZWN0IHg9IjQiIHk9IjI0IiB3aWR0aD0iNTYiIGhlaWdodD0iMyIgZmlsbD0iI2ZmNzc1NSIvPgogIDwhLS0gTGlkIGJvdHRvbSBlZGdlIC0tPgogIDxyZWN0IHg9IjQiIHk9IjMzIiB3aWR0aD0iNTYiIGhlaWdodD0iMyIgZmlsbD0iI2FhMjIwMCIvPgoKICA8IS0tIEhvcml6b250YWwgcmliYm9uIG9uIGxpZCAtLT4KICA8cmVjdCB4PSI0IiB5PSIyNyIgd2lkdGg9IjU2IiBoZWlnaHQ9IjYiIGZpbGw9IiNmN2QwMDAiLz4KICA8IS0tIFJpYmJvbiBzaGFkaW5nIG9uIGxpZCAtLT4KICA8cmVjdCB4PSI0IiB5PSIzMSIgd2lkdGg9IjU2IiBoZWlnaHQ9IjIiIGZpbGw9IiNkNGE4MDAiLz4KICA8IS0tIFJpYmJvbiBoaWdobGlnaHQgb24gbGlkIC0tPgogIDxyZWN0IHg9IjQiIHk9IjI3IiB3aWR0aD0iNTYiIGhlaWdodD0iMiIgZmlsbD0iI2ZmZTk1YSIvPgoKICA8IS0tIEJvdyBsZWZ0IGxvb3AgKG91dGVyKSAtLT4KICA8cmVjdCB4PSIxNCIgeT0iMTIiIHdpZHRoPSIxMiIgaGVpZ2h0PSIxNCIgZmlsbD0iI2Y3ZDAwMCIvPgogIDxyZWN0IHg9IjEyIiB5PSIxNCIgd2lkdGg9IjE0IiBoZWlnaHQ9IjEwIiBmaWxsPSIjZjdkMDAwIi8+CiAgPCEtLSBCb3cgbGVmdCBsb29wIChpbm5lciBob2xlKSAtLT4KICA8cmVjdCB4PSIxNiIgeT0iMTUiIHdpZHRoPSI2IiBoZWlnaHQ9IjciIGZpbGw9IiNjYzMzMTAiLz4KICA8IS0tIEJvdyBsZWZ0IHNoYWRpbmcgLS0+CiAgPHJlY3QgeD0iMjIiIHk9IjEyIiB3aWR0aD0iNCIgaGVpZ2h0PSIxNCIgZmlsbD0iI2Q0YTgwMCIvPgoKICA8IS0tIEJvdyByaWdodCBsb29wIChvdXRlcikgLS0+CiAgPHJlY3QgeD0iMzgiIHk9IjEyIiB3aWR0aD0iMTIiIGhlaWdodD0iMTQiIGZpbGw9IiNmN2QwMDAiLz4KICA8cmVjdCB4PSIzOCIgeT0iMTQiIHdpZHRoPSIxNCIgaGVpZ2h0PSIxMCIgZmlsbD0iI2Y3ZDAwMCIvPgogIDwhLS0gQm93IHJpZ2h0IGxvb3AgKGlubmVyIGhvbGUpIC0tPgogIDxyZWN0IHg9IjQyIiB5PSIxNSIgd2lkdGg9IjYiIGhlaWdodD0iNyIgZmlsbD0iI2NjMzMxMCIvPgogIDwhLS0gQm93IHJpZ2h0IGhpZ2hsaWdodCAtLT4KICA8cmVjdCB4PSIzOCIgeT0iMTIiIHdpZHRoPSI0IiBoZWlnaHQ9IjE0IiBmaWxsPSIjZmZlOTVhIi8+CgogIDwhLS0gQm93IGNlbnRlciBrbm90IC0tPgogIDxyZWN0IHg9IjI2IiB5PSIxNCIgd2lkdGg9IjEyIiBoZWlnaHQ9IjEwIiBmaWxsPSIjZmZlOTVhIi8+CiAgPHJlY3QgeD0iMjgiIHk9IjE2IiB3aWR0aD0iOCIgaGVpZ2h0PSI2IiBmaWxsPSIjZjdkMDAwIi4+CiAgPHJlY3QgeD0iMzAiIHk9IjE3IiB3aWR0aD0iNCIgaGVpZ2h0PSI0IiBmaWxsPSIjZDRhODAwIi8+CgogIDwhLS0gQm93IGxlZnQgdGFpbCAtLT4KICA8cmVjdCB4PSIxOCIgeT0iMjQiIHdpZHRoPSI2IiBoZWlnaHQ9IjYiIGZpbGw9IiNmN2QwMDAiLz4KICA8cmVjdCB4PSIxNiIgeT0iMjYiIHdpZHRoPSI0IiBoZWlnaHQ9IjQiIGZpbGw9IiNkNGE4MDAiLz4KCiAgPCEtLSBCb3cgcmlnaHQgdGFpbCAtLT4KICA8cmVjdCB4PSI0MCIgeT0iMjQiIHdpZHRoPSI2IiBoZWlnaHQ9IjYiIGZpbGw9IiNmN2QwMDAiLz4KICA8cmVjdCB4PSI0MiIgeT0iMjYiIHdpZHRoPSI0IiBoZWlnaHQ9IjQiIGZpbGw9IiNmZmU5NWEiLz4KCiAgPCEtLSBTdGFycyAvIHNwYXJrbGVzIC0tPgogIDxyZWN0IHg9IjIiIHk9IjgiIHdpZHRoPSI0IiBoZWlnaHQ9IjQiIGZpbGw9IiNmN2QwMDAiLz4KICA8cmVjdCB4PSI0IiB5PSI2IiB3aWR0aD0iNCIgaGVpZ2h0PSIyIiBmaWxsPSIjZjdkMDAwIi8+CiAgPHJlY3QgeD0iNCIgeT0iMTAiIHdpZHRoPSI0IiBoZWlnaHQ9IjIiIGZpbGw9IiNmN2QwMDAiLz4KCiAgPHJlY3QgeD0iNTYiIHk9IjQiIHdpZHRoPSI0IiBoZWlnaHQ9IjQiIGZpbGw9IiNmN2QwMDAiLz4KICA8cmVjdCB4PSI1OCIgeT0iMiIgd2lkdGg9IjQiIGhlaWdodD0iMiIgZmlsbD0iI2Y3ZDAwMCIvPgogIDxyZWN0IHg9IjU4IiB5PSI6IiB3aWR0aD0iNCIgaGVpZ2h0PSIyIiBmaWxsPSIjZjdkMDAwIi8+CgogIDxyZWN0IHg9IjAiIHk9IjQwIiB3aWR0aD0iMyIgaGVpZ2h0PSIzIiBmaWxsPSIjZmZmZmZmIiBvcGFjaXR5PSIwLjYiLz4KICA8cmVjdCB4PSI2MSIgeT0iNDQiIHdpZHRoPSIzIiBoZWlnaHQ9IjMiIGZpbGw9IiNmZmZmZmYiIG9wYWNpdHk9IjAuNiIvPgo8L3N2Zz4K" alt="gift">
       <div class="gbt" id="gt"></div>
       <div class="gbm" id="gmsg"></div>
-      <button class="gbc" onclick="closeModal()">Continue ▶</button>
+      <button class="gbc" onclick="closeModal()">Continue â¶</button>
     </div>
   </div>
 
   <div id="tc">
     <div class="tg">
-      <div class="tb" id="tbL">◀</div>
-      <div class="tb" id="tbR">▶</div>
+      <div class="tb" id="tbL">â</div>
+      <div class="tb" id="tbR">â¶</div>
     </div>
     <div class="tg">
-      <div class="tb" id="tbJ">⬆</div>
+      <div class="tb" id="tbJ">â¬</div>
     </div>
   </div>
 
   <!-- NFC splash (shown when ?nfc=1 in URL) -->
   <div id="nfcSplash" style="display:none">
     <div class="nfc-stars" id="nfcStars"></div>
-    <div class="nfc-shroom">🍄</div>
+    <div class="nfc-shroom">ð</div>
     <div class="nfc-title">KEYCHAIN ACTIVATED!</div>
     <div class="nfc-sub">Pranav, you found it!<br>Your birthday adventure is about to begin...</div>
-    <div class="nfc-tap">▶ TAP TO START ◀</div>
+    <div class="nfc-tap">â¶ TAP TO START â</div>
   </div>
 </div>
 
 <canvas id="cfc"></canvas>
 
-<script>
-// ══════════════════════════════════════════
-// 🎁 GIFTS — replace placeholder messages!
-// ══════════════════════════════════════════
-const GIFTS = [
-  {
-    id: 0,
-    unlock: new Date(2026, 9, 8),    // Oct 8
-    label: 'Oct 8',
-    emoji: '🎁',
-    title: 'Surprise #1 Unlocked! 🍄',
-    msg: 'I got you something 20 something years too late but better late than never right? I hope gift #1 reminds you that play is always the right answer, and to have the courage to chase your desires\n\nGuess what it is to get your gift 🕹️'
-  },
-  {
-    id: 1,
-    unlock: new Date(2026, 9, 9),    // Oct 9
-    label: 'Oct 9',
-    emoji: '⭐',
-    title: 'Surprise #2 Unlocked! 🍄',
-    msg: "This one's for the creative side of you that deserves more airtime 🎨\n\nGuess what it is to get your gift ✏️"
-  },
-  {
-    id: 2,
-    unlock: new Date(2026, 9, 10),   // Oct 10
-    label: 'Oct 10',
-    emoji: '🌟',
-    title: 'Surprise #3 Unlocked! 🍄',
-    msg: "One more day!! Fair warning, this one you're going to smell before you even open it 👃\n\nGuess what it is to get your gift"
-  },
-  {
-    id: 3,
-    unlock: new Date(2026, 9, 11),   // Oct 11 — BIRTHDAY!
-    label: 'Oct 11 🎂',
-    emoji: '🎂',
-    title: 'HAPPY BIRTHDAY!! 🎉🎊',
-    msg: "HAPPY 30!! 🥳\n\nOkay this is the one I've been most excited about. You've been talking about this forever and I finally did something about it\n\nGuess what it is to get your gift 🎛️"
-  }
-];
-
-// ══════════════════════════════════════════
+<script>ââââââââââââ
 // CANVAS
-// ══════════════════════════════════════════
+// ââââââââââââââââââââââââââââââââââââââââââ
 const canvas = document.getElementById('gc');
 const ctx    = canvas.getContext('2d');
 const CW = 800, CH = 500;
 
-// ══════════════════════════════════════════
+// ââââââââââââââââââââââââââââââââââââââââââ
 // PERSISTENCE
-// ══════════════════════════════════════════
+// ââââââââââââââââââââââââââââââââââââââââââ
 let saved = [];
 try { saved = JSON.parse(localStorage.getItem('bdayV2') || '[]'); } catch(e){}
 function persist() { try { localStorage.setItem('bdayV2', JSON.stringify(saved)); } catch(e){} }
@@ -494,9 +455,9 @@ function daysUntil(d) {
   return Math.max(0, Math.ceil((d - n) / 86400000));
 }
 
-// ══════════════════════════════════════════
+// ââââââââââââââââââââââââââââââââââââââââââ
 // START SCREEN
-// ══════════════════════════════════════════
+// ââââââââââââââââââââââââââââââââââââââââââ
 function buildGrid() {
   const el = document.getElementById('gg');
   el.innerHTML = '';
@@ -506,7 +467,7 @@ function buildGrid() {
     d.className = `gc${got?' got':ul?' ul':''}`;
     d.innerHTML = `
       <div class="gd">${g.label}</div>
-      <div class="gi">${got?'✅':ul?g.emoji:'🔒'}</div>
+      <div class="gi">${got?'â':ul?g.emoji:'ð'}</div>
       <div class="gs">${got?'Found!':ul?'Ready!':'in '+daysUntil(g.unlock)+'d'}</div>`;
     el.appendChild(d);
   });
@@ -525,9 +486,9 @@ function goHome() {
   document.getElementById('ss').style.display = 'flex';
 }
 
-// ══════════════════════════════════════════
+// ââââââââââââââââââââââââââââââââââââââââââ
 // WORLD  (3 400 px wide)
-// ══════════════════════════════════════════
+// ââââââââââââââââââââââââââââââââââââââââââ
 const GY = 440, WW = 3400;
 
 const PLATS = [
@@ -582,9 +543,9 @@ const HILLS = Array.from({length:16}, (_,i) => ({
   x: i*242+Math.random()*80, r:105+Math.random()*115
 }));
 
-// ══════════════════════════════════════════
+// ââââââââââââââââââââââââââââââââââââââââââ
 // PLAYER
-// ══════════════════════════════════════════
+// ââââââââââââââââââââââââââââââââââââââââââ
 const P = {
   x:52, y:GY-50, w:28, h:48,
   vx:0, vy:0, onGround:false,
@@ -592,9 +553,9 @@ const P = {
 };
 const GRAV=0.52, JUMP=-12, SPD=4.3, MFALL=14;
 
-// ══════════════════════════════════════════
+// ââââââââââââââââââââââââââââââââââââââââââ
 // INPUT
-// ══════════════════════════════════════════
+// ââââââââââââââââââââââââââââââââââââââââââ
 const keys = {};
 
 window.addEventListener('keydown', e => {
@@ -632,18 +593,18 @@ function doJump() {
   sfxJump(); buzz(18);
 }
 
-// ═════════════════════════════════
+// âââââââââââââââââââââââââââââââââ
 // CAMERA
-// ══════════════════════════════════════════
+// ââââââââââââââââââââââââââââââââââââââââââ
 let camX = 0;
 function updateCam() {
   camX += (P.x - CW/3 - camX) * 0.09;
   camX = Math.max(0, Math.min(WW - CW, camX));
 }
 
-// ══════════════════════════════════════════
+// ââââââââââââââââââââââââââââââââââââââââââ
 // PHYSICS + COLLISION
-// ══════════════════════════════════════════
+// ââââââââââââââââââââââââââââââââââââââââââ
 function update() {
   P.moving = false;
   if(keys['ArrowLeft'])       { P.vx=-SPD; P.dir=-1; P.moving=true; }
@@ -656,7 +617,7 @@ function update() {
   P.onGround = false;
 
   for(const pl of PLATS) {
-    if(P.x+p.w > pl.x && P.x < pl.x+pl.w) {
+    if(P.x+P.w > pl.x && P.x < pl.x+pl.w) {
       const f = P.y + P.h;
       if(f >= pl.y && f <= pl.y+pl.h+5 && P.vy >= 0) {
         P.y = pl.y - P.h; P.vy = 0; P.onGround = true; P.jumping = false;
@@ -692,9 +653,9 @@ function update() {
   updateCam();
 }
 
-// ══════════════════════════════════════════
+// ââââââââââââââââââââââââââââââââââââââââââ
 // PARTICLES
-// ══════════════════════════════════════════
+// ââââââââââââââââââââââââââââââââââââââââââ
 let parts = [];
 const PCOLS = ['#FFD700','#FF6B6B','#4ECDC4','#fff','#C792EA','#68EF8A'];
 
@@ -715,9 +676,9 @@ function tickParts() {
   parts.forEach(p => { p.x+=p.vx; p.y+=p.vy; p.vy+=0.38; p.l-=0.022; });
 }
 
-// ══════════════════════════════════════════
-// DRAW — BACKGROUND
-// ══════════════════════════════════════════
+// ââââââââââââââââââââââââââââââââââââââââââ
+// DRAW â BACKGROUND
+// ââââââââââââââââââââââââââââââââââââââââââ
 function dBg() {
   const g = ctx.createLinearGradient(0,0,0,CH);
   g.addColorStop(0,'#4e8aed'); g.addColorStop(1,'#a8c4f8');
@@ -727,7 +688,7 @@ function dHills() {
   HILLS.forEach(h => {
     const hx = h.x - camX*0.2;
     if(hx<-h.r-10||hx>CW+h.r+10) return;
-  2 ctx.fillStyle='#5faa3a';
+  ctx.fillStyle='#5faa3a';
     ctx.beginPath(); ctx.arc(hx,GY,h.r,Math.PI,0); ctx.closePath(); ctx.fill();
     ctx.fillStyle='#78c84e';
     ctx.beginPath(); ctx.arc(hx,GY,h.r*.62,Math.PI,0); ctx.closePath(); ctx.fill();
@@ -747,9 +708,9 @@ function dClouds(t) {
   });
 }
 
-// ══════════════════════════════════════════
-// DRAW — TERRAIN
-// ══════════════════════════════════════════
+// ââââââââââââââââââââââââââââââââââââââââââ
+// DRAW â TERRAIN
+// ââââââââââââââââââââââââââââââââââââââââââ
 function dGround() {
   ctx.fillStyle='#5b9e38'; ctx.fillRect(0,GY,CW,14);
   ctx.fillStyle='#6cbf42'; ctx.fillRect(0,GY+2,CW,6);
@@ -763,7 +724,7 @@ function dPlats() {
   for(let i=1;i<PLATS.length;i++) {
     const p=PLATS[i]; const sx=p.x-camX;
     if(sx>CW+20||sx+p.w<-20) continue;
-  2 ctx.fillStyle='#5b9e38'; ctx.fillRect(sx,p.y,p.w,7);
+  ctx.fillStyle='#5b9e38'; ctx.fillRect(sx,p.y,p.w,7);
     ctx.fillStyle='#6cbf42'; ctx.fillRect(sx+2,p.y+1,p.w-4,4);
     ctx.fillStyle='#c49a46'; ctx.fillRect(sx,p.y+7,p.w,p.h-7);
     ctx.strokeStyle='#8a6522'; ctx.lineWidth=1; ctx.strokeRect(sx,p.y,p.w,p.h);
@@ -814,9 +775,9 @@ function dFlag(t) {
   ctx.fill();
 }
 
-// ══════════════════════════════════════════
-// DRAW — MUSHROOMS
-// ══════════════════════════════════════════
+// ââââââââââââââââââââââââââââââââââââââââââ
+// DRAW â MUSHROOMS
+// ââââââââââââââââââââââââââââââââââââââââââ
 const CAP_COLS = ['#e03030','#d4922a','#2899c8','#8850d0'];
 
 function dMush(m, t) {
@@ -834,331 +795,301 @@ function dMush(m, t) {
   ctx.fillStyle='rgba(0,0,0,.12)';
   ctx.beginPath(); ctx.ellipse(sx+13,sy+22,12,4,0,0,Math.PI*2); ctx.fill();
 
-  ctx.fillStyle = m.got ? '444' : ul ? CAP_COLS[m.gId] : '#4a4a4a';
+  ctx.fillStyle = m.got ? '#444' : ul ? CAP_COLS[m.gId] : '#4a4a4a';
   ctx.beginPath(); ctx.arc(sx+13,sy+13,13,Math.PI,0); ctx.closePath(); ctx.fill();
 
   if(ul && !m.got) {
     ctx.fillStyle='rgba(255,255,255,.9)';
-    [[sx+8,sy+10,3.8],[sx+18,sy+8,3],[sx+15,sy+16,2.2]].forEach(([x,y*r])=>{
-      ctx.beginPath(); ctx�\��K�X]�J��N����[
+    [[sx+8,sy+10,3.8],[sx+18,sy+8,3],[sx+15,sy+16,2.2]].forEach(([x,y,r])=>{      ctx.beginPath(); ctx.arc(x,y,r,0,Math.PI*2); ctx.fill();
+    });
+  }
+  // Locked state question mark overlay
+  if(!ul) {
+    ctx.globalAlpha=0.55;
+    ctx.fillStyle='#111';
+    ctx.fillRect(sx,sy,26,32);
+    ctx.globalAlpha=1;
+    ctx.fillStyle='#fff';
+    ctx.font='bold 13px monospace';
+    ctx.textAlign='center';
+    ctx.fillText('?',sx+13,sy+20);
+    ctx.textAlign='left';
+  }
+  // "Too soon" shake tooltip
+  if(m.sl) {
+    ctx.fillStyle='rgba(0,0,0,.72)';
+    ctx.fillRect(sx-18,sy-22,62,16);
+    ctx.fillStyle='#FFD700';
+    ctx.font='7px "Press Start 2P",monospace';
+    ctx.textAlign='center';
+    ctx.fillText('NOT YET!',sx+13,sy-11);
+    ctx.textAlign='left';
+  }
+}
 
-NJN���ؘ[[HH���X]��[�
-��
-�J�����[�[OI�ё�
-�	����۝I؛�
-�[ۛ��X�I���^[YۏI��[�\�����[^
-	�ԐP�I��
-�L��KMJN��^[YۏI�Y�	����ؘ[[OLNB��Y�K���
-H���[�[OI����������۝I�L�[��\�\�Y����^[YۏI��[�\������[^
-	��$���
-�L��KL�N���^[YۏI�Y�	��]\��B�Y�][
-H���۝I�L��[��\�\�Y�����^[YۏI��[�\�����[^
-	�'�$���
-�L��KL�N���[�[OIܙؘJ�MK�MK�MK��JI�����۝I؛�
-�[ۛ��X�I����[^
-^\�[�[
-�Y��[����J��	��
-�L��J�͊N��^[YۏI�Y�	�Y�K��
-H���[�[OIܙؘJ�
-I�����[�X�
-�M��KMLLL�
-N���[�[OI�ё�
-�	�����۝I؛�
-�[ۛ��X�I���^[YۏI��[�\�����[^
-	�[�����	���Y��X�[
-��I��
-�L��KL�JN��^[YۏI�Y�	�B�B�B����8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d����U�8�%PT�S��8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d��[��[ۈX\�[�
-H�ۜ��T�X�[V�OT�N���]�J
-NY��\�
-H����[��]J�
-���
-N�����[JLKJN�X\�[�]
-�K���[YJN�B�[�HX\�[�]
-��K���[YJN���\�ܙJ
-NB���[��[ۈX\�[�]
-K�JH���[�[OI��X��	��ۜ��V��
-�J��KLK�
-�MKJ��KLWK���
-�KJ���LLWK�
-�M�J��KKWWK���
-�KJ���LWK�
-�M�J��LWWK���
-̋J�͋KL�K�
-�M�J�͋KL�WK�N
-�ٚW_��JK��ܑXX�
+function dMushs(t) { MUSHS.forEach(m => dMush(m,t)); }
 
-�K��JOO����[�X�
-K��
-JN����[�[OI��؍YX�	����[�X�
-
-�J̍�M�N����[�X�
-
-�J�NL�L
-N���[�X�
-
-�KJ�N
-L�N����[�X�
-
-�NKJ�N
-L�N����[�[OI����L������[�X�
-
-�J�N�L
-N���[�X�
-
-�J̌�
-K
-N����[�X�
-
-̌�J̌�
-K
-N����[�[OI�ٍX͎L	�Y��OOOL�H����[�X�
-L�J�MK
-�
-�N����[�X�
-
-̍J�MK
-�
-�N�B�[�HY��OOOLJH����[�X�
-L�J̌
-�
-JN����[�X�
-
-̍J̍K
-�
-JN�B�[�H����[�X�
-L�J̍K
-�
-JN����[�X�
-
-̍J̍K
-�
-JN�B�����[�[OI�ٍX͎L	�����[�X�
-
-�KJ�NM
-N���[�[OI��	�����[�X�
-
-�KJ�LK��N����[�X�
-
-�M�J�LK��N���[�[OI�ٙ�������[�X�
-
-�LJ�LKKJN����[�X�
-
-�M�J�LKKJN���[�[OI��NL
-�	�����[�X�
-
-�L�J�M
-K
-N���[�[OI��X��	����[�X�
-
-��J�MK
-K
-N����[�X�
-
-�M�J�MK
-K
-N���[�X�
-
-��J�NM
-N���[�X�
-
-�KJ�K
-
-JN����[�X�
-
-�NKJ�K
-
-JN���[�[OI����L�������[�X�
-
-�KJ���
-JN���[�X�
-
-��K��
-�N���[�[OI�ё�
-�	����[�X�
-
-�KJ�K�
-JN����[�X�
-
-�M�J�K�
-JN����[�X�
-
-�LKJ̋
-��NB���[��[ۈ\��
-H\�˙�ܑXX�
-O����ؘ[[O\�����[�[O\�����[�X�
-�X�[V\��̋�K\��̋����NJN���ؘ[[OLNB���[��[ۈ��ܙ\��
-H�ۜ����SX]�Z[�K����P��JN�ۜ��P��NNM��OM����[�[OIܙؘJ�JI�����[�X�
-��KN
-N���[�[OI�ё�
-�	�����[�X�
-��KN
-����
-N������T�[OIܙؘJ�MK�MK�MK��I����[�U�YLN�������T�X�
-��KN
-NB����8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d���Q���8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d��[��[ۈ\]RQ
+// ââââââââââââââââââââââââââââââââââââââââââ
+// PLAYER DRAWING (pixel-art Mario-style)
+// ââââââââââââââââââââââââââââââââââââââââââ
+function dPlayer() {
+  const sx = Math.round(P.x - camX);
+  const sy = Math.round(P.y);
 
-H�Q�˙�ܑXX�
+  ctx.save();
+  if(P.dir < 0) {
+    ctx.translate(sx + P.w/2, 0);
+    ctx.scale(-1,1);
+    ctx.translate(-(sx + P.w/2), 0);
+  }
 
-�JHO��ۜ�[Y��[Y[���][[Y[��RY
-	�	��JNY�[
-H[��\��\�����J	���	�\���
-�Q���WJJNJNB�\]RQ
+  const px = sx, py = sy;
 
-N���8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d����Q�S�S���8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d�]S�[�H�[�N��[��[ۈ�[�[�[
-�Y�
-H�[��[��Y�[�N�S�[�]�YN��[Y[���][[Y[��RY
-	��I�K�^�۝[�H�Y��[[ښN��[Y[���][[Y[��RY
-	��	�K�^�۝[�H�Y��]N��[Y[���][[Y[��RY
-	��\���K�^�۝[�H�Y��\����[Y[���][[Y[��RY
-	��I�K��\��\��Y
-	�ۉ�N][���ۙ�]J�Y��Y
-NB���[��[ۈ���S[�[
+  // Shadow
+  ctx.fillStyle='rgba(0,0,0,.18)';
+  ctx.beginPath(); ctx.ellipse(px+14,py+48,11,4,0,0,Math.PI*2); ctx.fill();
 
-H��[Y[���][[Y[��RY
-	��I�K��\��\���[[ݙJ	�ۉ�NS�[�Y�[�N��[��[��]�YN���ۙ�]J
-N��Z[ܚY
+  // Shoes
+  ctx.fillStyle='#3e2000';
+  ctx.fillRect(px+1,py+40,12,8);
+  ctx.fillRect(px+15,py+40,12,8);
+  ctx.fillStyle='#5c3300';
+  ctx.fillRect(px+1,py+40,12,3);
+  ctx.fillRect(px+15,py+40,12,3);
 
-N�\]Y\�[�[X][ۑ��[YJ��
-NB����8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d����ӑ�UB���8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d��ۜ��݈H��[Y[���][[Y[��RY
-	�٘��N�ۜ���H�݋��]�۝^
-	̙	�N�[��[ۈސ��
-H��݋��Y]�[��˚[��\��Y��݋�ZY�]�[��˚[��\�ZY��B�ސ��
-N��[��˘Y]�[�\�[�\�	ܙ\�^�I�ސ��N�]�\��V�Kܝ[�Y�[�K�Y��ۜ�����V��ё�
-�	�	�ё������	��P��	�	����L�PI�	�ٙ���	�͎Q�I�	�ю�	�N��[��[ۈ][���ۙ�]J�Y
-H�\��V�N�ܝ[�]�YN�ۜ�X�V���L��	�	��
-L��I�	�̎NX�	�	��
-L	�V��YN�ۜ����Vˋ������X�N�܊]OL�OM��J��H�\�˜\�
-��X]��[��J
-J��݋��YN�L�SX]��[��J
-J������X]��[��J
-KK�JJ�K�K�N���X]��[��J
-J��K�΍J�X]��[��J
-J�L���X]��[��J
-J�X]�J������X]��[��J
-KK�JJ���K�Θ����X]���܊X]��[��J
-J���˛[��
-WK���X]��[��J
-O���܉Ή��JNB�[�[P�ۙ�
-NB��[��[ۈ[�[P�ۙ�
-HY�Xܝ[�H�]\������X\��X�
-�݋��Y�݋�ZY�
-N�\�˙�ܑXX�
-O��
-�\����J�\��N���J�K�
-�����
-�\�������]�J
-N�����[��]J��JN������]J���
-N����[�[O\��Y���OOI܉�H����[�X�
-\��̋\�������̊N[�H�����Y�[�]
+  // Pants / overalls (blue)
+  ctx.fillStyle='#1655b5';
+  ctx.fillRect(px+3,py+28,22,14);
+  ctx.fillStyle='#2060cc';
+  ctx.fillRect(px+5,py+26,7,6); // left suspender
+  ctx.fillRect(px+16,py+26,7,6); // right suspender
+  ctx.fillStyle='#1040a0';
+  ctx.fillRect(px+12,py+34,4,8); // seam
 
-N����\����̋X]�J��N�����[
+  // Shirt (red)
+  ctx.fillStyle='#d92b2b';
+  ctx.fillRect(px+2,py+20,24,12);
+  ctx.fillStyle='#f03333';
+  ctx.fillRect(px+3,py+20,6,8); // left highlight
+  ctx.fillStyle='#b52020';
+  ctx.fillRect(px+20,py+22,4,10); // right shadow
 
-N�B�����\�ܙJ
-NJN�\��X�\�˙�[\�O��O�݋�ZY�
-��
-N�Y�\�\]Y\�[�[X][ۑ��[YJ[�[P�ۙ�NB��[��[ۈ���ۙ�]J
-Hܝ[�Y�[�N��[��[[�[X][ۑ��[YJ�Y�N����X\��X�
-�݋��Y�݋�ZY�
-NB����8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d�����S����8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d�]X��[��[ۈ�]P�
-HY�XX�HX�[�]��[��ː]Y[��۝^�[��˝�X��]]Y[��۝^
-J
-N�]\��X�B��[��[ۈٞ�[\
+  // Head skin
+  ctx.fillStyle='#ffca88';
+  ctx.fillRect(px+4,py+8,20,14);
+  ctx.fillStyle='#f0b870';
+  ctx.fillRect(px+20,py+10,4,10); // right shadow
+  ctx.fillRect(px+4,py+18,20,4);  // chin shadow
 
-^�H�ۜ�OY�]P�
-K�XK�ܙX]S���[]܊
-K�XK�ܙX]Q�Z[�
-N˘�ۛ�X�
-�N�˘�ۛ�X�
-K�\�[�][ۊN˙��\]Y[��K��]�[YP][YJ��K��\��[�[YJN˙��\]Y[��K�^ۙ[�X[�[\՘[YP][YJ
-L�K��\��[�[YJˌLJN˙�Z[���]�[YP][YJ���K��\��[�[YJN˙�Z[��^ۙ[�X[�[\՘[YP][YJ�KK��\��[�[YJˌL�N˜�\�
+  // Hat (red)
+  ctx.fillStyle='#d92b2b';
+  ctx.fillRect(px+2,py+2,24,9);
+  ctx.fillRect(px+0,py+8,28,5);   // brim
+  ctx.fillStyle='#f03333';
+  ctx.fillRect(px+4,py+2,8,5);    // highlight
 
-N�˜��
-K��\��[�[YJˌL�NX�]�
-J^�B�B��[��[ۈٞ��[�
-^�H�ۜ�OY�]P�
-N��LMLLMLMK��ܑXX�
+  // Eyes
+  ctx.fillStyle='#1a0a00';
+  ctx.fillRect(px+8, py+12,4,4);
+  ctx.fillRect(px+17,py+12,4,4);
+  ctx.fillStyle='#fff';
+  ctx.fillRect(px+9, py+12,2,2);
+  ctx.fillRect(px+18,py+12,2,2);
 
-�JOO��ۜ��XK�ܙX]S���[]܊
-K�XK�ܙX]Q�Z[�
-N˝\OI��]X\�I��˘�ۛ�X�
-�N�˘�ۛ�X�
-K�\�[�][ۊN˙��\]Y[��K��[YOY��ۜ�XK��\��[�[YJ�J��
-�N˙�Z[���]�[YP][YJ�N
-N˙�Z[��^ۙ[�X[�[\՘[YP][YJ�K
-ˌL�N˜�\�
-
-N�˜��
-
-ˌL�NJNX�]�
-J^�B�B����8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d���TP���8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d��[��[ۈ�^��]\��H�H�Y��]�Y�]܋��X��]JH�]�Y�]܋��X��]J]\��N�H�]�
-J^�B�B����8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d�������T����8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d��[��[ۈ[�]���
-H�ۜ�\�[\�H�]�T��X\��\�[\��[��˛��][ۋ��X\��
-NY�\\�[\˚\�	ۙ���JH�]\����ۜ��\�H��[Y[���][[Y[��RY
-	ۙ���\�	�N�ۜ��\��[H��[Y[���][[Y[��RY
-	ۙ���\���N�\���[K�\�^HH	ٛ^	������][��8�d�\��܊]OL�OM�J��H�ۜ��H��[Y[��ܙX]Q[[Y[�
-	�]��N˘�\�Ә[YHH	ۙ��\�\��˝^�۝[�H���d	�	��*	�	�'�'��	�'���V�IMN˜�[K�Y�H
+  // Nose
+  ctx.fillStyle='#e09050';
+  ctx.fillRect(px+13,py+15,4,3);
 
-J�X]��[��J
-J�L
-J��I�˜�[K�[�[X][ۑ\�][ۈH
-��X]��[��J
-J�
-J����˜�[K�[�[X][ۑ[^HH
-SX]��[��J
-J�JJ����˜�[K��۝�^�HH
-���X]��[��J
-J��
-J�ܙ[I��\��[�\[��[
-�NB�����[X��]ܞH�^��ۈ���\\��]�[��^���
-�
-��JN��ۜ�\�Z\��H
+  // Mustache
+  ctx.fillStyle='#5c3000';
+  ctx.fillRect(px+6, py+17,16,3);
+  ctx.fillRect(px+4, py+18,4,2);
+  ctx.fillRect(px+20,py+18,4,2);
 
-HO��^����JN�\���[K��[��][ۈH	��X�]H�
-\���\���[K��X�]HH	�	��][Y[�]
+  // Walking leg animation
+  if(P.onGround && P.moving) {
+    const fr = P.frame % 2;
+    if(fr===0) {
+      ctx.fillStyle='#1040a0';
+      ctx.fillRect(px+3,py+38,11,4);
+      ctx.fillRect(px+14,py+36,11,6);
+    } else {
+      ctx.fillStyle='#1040a0';
+      ctx.fillRect(px+3,py+36,11,6);
+      ctx.fillRect(px+14,py+38,11,4);
+    }
+  } else if(P.jumping) {
+    // Legs up
+    ctx.fillStyle='#1040a0';
+    ctx.fillRect(px+3, py+36,11,4);
+    ctx.fillRect(px+14,py+36,11,4);
+  }
 
+  ctx.restore();
+}
 
-HO���\���[K�\�^HH	ۛۙI��K
+// ââââââââââââââââââââââââââââââââââââââââââ
+// PARTICLES
+// ââââââââââââââââââââââââââââââââââââââââââ
+function dParts() {
+  parts.forEach(p => {
+    ctx.globalAlpha = Math.max(0,p.l);
+    ctx.fillStyle = p.c;
+    const s = p.s * p.l;
+    ctx.fillRect(p.x - s/2, p.y - s/2, s, s);
+  });
+  ctx.globalAlpha = 1;
+}
 
-�
-NN�\��Y]�[�\�[�\�	��X��\�	�\�Z\���ۘ�N��YK\��]�N��Y_JN�\��Y]�[�\�[�\�	��X���\�Z\���ۘ�N��Y_JNJJ
-N���8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d����SQH�����8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d8�d�]�[��[��H�[�N��[��[ۈ��
-
-HY�\�[��[��H�]\��\]J
-N�X��\��
-N���X\��X�
-���
-N��
-N�[�
-N���Y�
-NX�܊
-N�\\�
-Nܛ�[�
+// ââââââââââââââââââââââââââââââââââââââââââ
+// HUD
+// ââââââââââââââââââââââââââââââââââââââââââ
+function updateHUD() {
+  MUSHS.forEach((m,i) => {
+    const el = document.getElementById('h'+i);
+    if(!el) return;
+    const ul = isUnlocked(GIFTS[m.gId]);
+    if(m.got) {
+      el.textContent = 'â';
+      el.classList.add('got');
+    } else if(ul) {
+      el.textContent = 'ð';
+      el.classList.remove('got');
+      el.style.opacity = '1';
+    } else {
+      el.textContent = 'ð';
+      el.classList.remove('got');
+      el.style.opacity = '0.38';
+    }
+  });
+}
+updateHUD();
 
-N�]�
-NUT�˙�ܑXX�
-OO�]\�
-K
-JN\��
-N��Y�
-N�X\�[�
-N���ܙ\��
-N�\]Y\�[�[X][ۑ��[YJ��
-NB�����K\�[�\�
-�Z[��\��ܙY[�B��[��[ۈ�J
-^���X\��X�
-���
-N��
-N�[�
-N���Y�
-NX�܊
-N�\\�
-Nܛ�[�
+// ââââââââââââââââââââââââââââââââââââââââââ
+// AUDIO (Web Audio API â no external deps)
+// ââââââââââââââââââââââââââââââââââââââââââ
+let AC = null;
+function ac() {
+  if(!AC) try { AC = new (window.AudioContext||window.webkitAudioContext)(); } catch(e){}
+  return AC;
+}
+function tone(freq,dur,type,vol) {
+  const a=ac(); if(!a) return;
+  try {
+    const o=a.createOscillator(), g=a.createGain();
+    o.connect(g); g.connect(a.destination);
+    o.type=type||'square'; o.frequency.value=freq;
+    const t=a.currentTime;
+    g.gain.setValueAtTime(vol||0.07,t);
+    g.gain.exponentialRampToValueAtTime(0.0001,t+dur);
+    o.start(t); o.stop(t+dur);
+  } catch(e){}
+}
+function sfxJump() { tone(310,0.06); setTimeout(()=>tone(420,0.09),45); }
+function sfxCoin() { tone(660,0.07); setTimeout(()=>tone(880,0.13),55); }
+function buzz(pat) { try { navigator.vibrate(pat); } catch(e){} }
 
-N�]�
-NUT�˙�ܑXX�
-OO�]\�
-K
-JN�Y�
-N�X\�[�
-NJJ
-N��ܚ\��؛�O���[�
+// ââââââââââââââââââââââââââââââââââââââââââ
+// CONFETTI CANVAS (#cfc)
+// ââââââââââââââââââââââââââââââââââââââââââ
+let cfcEl, cfcCtx, cparts=[];
+function launchConfetti() {
+  cfcEl = document.getElementById('cfc');
+  if(!cfcEl) return;
+  cfcCtx = cfcEl.getContext('2d');
+  cfcEl.width = window.innerWidth; cfcEl.height = window.innerHeight;
+  cparts = [];
+  for(let i=0;i<140;i++) {
+    cparts.push({
+      x: Math.random()*cfcEl.width, y: -20-Math.random()*120,
+      vx: (Math.random()-.5)*5, vy: 3+Math.random()*4,
+      s: 7+Math.random()*7, r: Math.random()*Math.PI*2, vr: (Math.random()-.5)*.18,
+      c: ['#FFD700','#FF6B6B','#4ECDC4','#C792EA','#68EF8A','#fff','#f39c12','#e74c3c'][Math.floor(Math.random()*8)]
+    });
+  }
+  animConf();
+}
+function animConf() {
+  if(!cfcCtx || cparts.length===0) { if(cfcEl) cfcCtx.clearRect(0,0,cfcEl.width,cfcEl.height); return; }
+  cfcCtx.clearRect(0,0,cfcEl.width,cfcEl.height);
+  cparts = cparts.filter(c=>c.y<cfcEl.height+30);
+  cparts.forEach(c=>{
+    c.x+=c.vx; c.y+=c.vy; c.r+=c.vr; c.vy+=0.04;
+    cfcCtx.save();
+    cfcCtx.translate(c.x,c.y); cfcCtx.rotate(c.r);
+    cfcCtx.fillStyle=c.c;
+    cfcCtx.fillRect(-c.s/2,-c.s/4,c.s,c.s/2);
+    cfcCtx.restore();
+  });
+  requestAnimationFrame(animConf);
+}
+
+// ââââââââââââââââââââââââââââââââââââââââââ
+// GIFT MODAL
+// ââââââââââââââââââââââââââââââââââââââââââ
+let mOpen = false;
+
+function openModal(g) {
+  mOpen = true;
+  const gm = document.getElementById('gm');
+  document.getElementById('gt').textContent = g.title;
+  document.getElementById('gmsg').textContent = g.msg;
+  gm.classList.add('on');
+  launchConfetti();
+}
+
+function closeModal() {
+  mOpen = false;
+  document.getElementById('gm').classList.remove('on');
+}
+
+// ââââââââââââââââââââââââââââââââââââââââââ
+// NFC SPLASH SCREEN
+// ââââââââââââââââââââââââââââââââââââââââââ
+(function initNfc() {
+  const params = new URLSearchParams(location.search);
+  if(!params.has('nfc')) return;
+  const splash = document.getElementById('nfcSplash');
+  if(!splash) return;
+  splash.style.display = 'flex';
+  const starsEl = document.getElementById('nfcStars');
+  if(starsEl) {
+    for(let i=0;i<18;i++){
+      const s=document.createElement('div');
+      s.className='nfc-star';
+      s.textContent=['â­','â¨','ð','ð','ð'][i%5];
+      s.style.cssText=`left:${Math.random()*90+5}%;animation-duration:${3+Math.random()*4}s;animation-delay:${Math.random()*3}s;`;
+      starsEl.appendChild(s);
+    }
+  }
+  splash.addEventListener('click', ()=>{ splash.style.display='none'; }, {once:true});
+})();
+
+// ââââââââââââââââââââââââââââââââââââââââââ
+// MAIN GAME LOOP
+// ââââââââââââââââââââââââââââââââââââââââââ
+let running = false;
+
+function draw(t) {
+  dBg();
+  dHills();
+  dClouds(t);
+  dGround();
+  dPlats();
+  dPipes();
+  dDecor(t);
+  dMushs(t);
+  dPlayer();
+  dParts();
+  dFlag(t);
+}
+
+function loop(t) {
+  if(!running) return;
+  update();
+  tickParts();
+  draw(t);
+  requestAnimationFrame(loop);
+}
+
+</script>
