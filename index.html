@@ -11,7 +11,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Bday Quest">
-<link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%230a0a14'/><text y='70' font-size='70' x='12'>ð</text></svg>">
+<link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%230a0a14'/><text y='70' font-size='70' x='12'>🍄</text></svg>">
 <style>
 :root { color-scheme: dark; }
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -43,7 +43,7 @@ html, body {
   image-rendering: crisp-edges;
 }
 
-/* ââ PORTRAIT MOBILE: fill full screen ââ */
+/* ── PORTRAIT MOBILE: fill full screen ── */
 @media (orientation: portrait) and (max-width: 768px) {
   body { justify-content: flex-start; }
   #wrap {
@@ -52,6 +52,8 @@ html, body {
   }
   #gc {
     aspect-ratio: unset !important;
+    object-fit: contain;
+    background: linear-gradient(#4e8aed 50%, #7a5730 50%);
     width: 100% !important;
     height: 100% !important;
   }
@@ -75,7 +77,7 @@ html, body {
     margin-bottom: 10px;
     line-height: 2.2;
   }
-  /* 2Ã2 gift grid instead of 4-in-a-row */
+  /* 2×2 gift grid instead of 4-in-a-row */
   .gg {
     display: grid !important;
     grid-template-columns: 1fr 1fr;
@@ -98,7 +100,7 @@ html, body {
   .ch { margin-top: 8px; font-size: .32rem; }
 }
 
-/* ââ START SCREEN ââ */
+/* ── START SCREEN ── */
 #ss {
   position: absolute; inset: 0;
   background: #5c94fc;
@@ -217,7 +219,7 @@ html, body {
   text-shadow: 1px 1px 0 #000;
 }
 
-/* ââ HUD ââ */
+/* ── HUD ── */
 #hud {
   position: absolute; top: 6px; right: 6px;
   display: flex; gap: 5px; z-index: 5; align-items: center;
@@ -240,7 +242,7 @@ html, body {
 }
 .hm.got { background: rgba(255,215,0,.22); border-color: #FFD700; }
 
-/* ââ GIFT MODAL ââ */
+/* ── GIFT MODAL ── */
 #gm {
   display: none; position: absolute; inset: 0;
   background: rgba(0,0,0,.87);
@@ -279,7 +281,7 @@ html, body {
 }
 .gbc:hover { background: #ffc107; }
 
-/* ââ TOUCH CONTROLS ââ */
+/* ── TOUCH CONTROLS ── */
 #tc {
   position: absolute; bottom: 0; left: 0; right: 0;
   display: none; justify-content: space-between; align-items: flex-end;
@@ -313,7 +315,7 @@ html, body {
 }
 #tbJ.pressed, #tbJ:active { background: rgba(220,50,50,.6); }
 
-/* ââ NFC SPLASH ââ */
+/* ── NFC SPLASH ── */
 #nfcSplash {
   position: absolute; inset: 0;
   background: linear-gradient(160deg, #1a1a3a 0%, #0a0a14 100%);
@@ -366,7 +368,7 @@ html, body {
   to   { transform: translateY(-10%) rotate(360deg); opacity: 0; }
 }
 
-/* ââ CONFETTI ââ */
+/* ── CONFETTI ── */
 #cfc {
   position: fixed; inset: 0;
   pointer-events: none; z-index: 30;
@@ -380,11 +382,11 @@ html, body {
   <canvas id="gc" width="800" height="500"></canvas>
 
   <div id="hud">
-    <button id="homeBtn" onclick="goHome()">ð </button>
-    <div class="hm" id="h0">ð</div>
-    <div class="hm" id="h1">ð</div>
-    <div class="hm" id="h2">ð</div>
-    <div class="hm" id="h3">ð</div>
+    <button id="homeBtn" onclick="goHome()">🏠</button>
+    <div class="hm" id="h0">🍄</div>
+    <div class="hm" id="h1">🍄</div>
+    <div class="hm" id="h2">🍄</div>
+    <div class="hm" id="h3">🍄</div>
   </div>
 
   <div id="ss">
@@ -393,54 +395,94 @@ html, body {
     <div class="ss-qb" style="bottom:60px;right:10%">?</div>
     <div class="ss-qb" style="bottom:100px;left:22%">?</div>
     <div class="ss-qb" style="bottom:100px;right:22%">?</div>
-    <div class="ss-title">ð Happy 30 Pranav! ð</div>
-    <div class="ss-sub">30 years of not having a Game Boy ð®<br><br>Since your biggest love language is gifts â here's a game to get yours!</div>
+    <div class="ss-title">🎂 Happy 30 Pranav! 🎂</div>
+    <div class="ss-sub">30 years of not having a Game Boy 🎮<br><br>Since your biggest love language is gifts — here's a game to get yours!</div>
     <div class="gg" id="gg"></div>
-    <button id="playBtn" onclick="startGame()">â¶ PLAY</button>
-    <div class="ch">â â MOVE &nbsp;|&nbsp; â or SPACE to JUMP</div>
+    <button id="playBtn" onclick="startGame()">▶ PLAY</button>
+    <div class="ch">← → MOVE &nbsp;|&nbsp; ↑ or SPACE to JUMP</div>
   </div>
 
   <div id="gm">
     <div class="gb">
-      <img class="gbe" id="ge" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCIgc2hhcGUtcmVuZGVyaW5nPSJjcmlzcEVkZ2VzIj4KICA8IS0tIFNoYWRvdyAtLT4KICA8cmVjdCB4PSI4IiB5PSI1OCIgd2lkdGg9IjQ4IiBoZWlnaHQ9IjQiIGZpbGw9IiMxYTBhMDAiIG9wYWNpdHk9IjAuMyIvPgoKICA8IS0tIEJveCBib2R5IC0tPgogIDxyZWN0IHg9IjgiIHk9IjMyIiB3aWR0aD0iNDgiIGhlaWdodD0iMjgiIGZpbGw9IiNlODM0MGEiLz4KICA8IS0tIEJveCBib2R5IHNoYWRpbmcgKHJpZ2h0KSAtLT4KICA8cmVjdCB4PSI0OCIgeT0iMzIiIHdpZHRoPSI4IiBoZWlnaHQ9IjI4IiBmaWxsPSIjYjUyNDBhIi8+CiAgPCEtLSBCb3ggYm9keSBoaWdobGlnaHQgKGxlZnQpIC0tPgogIDxyZWN0IHg9IjgiIHk9IjMyIiB3aWR0aD0iNCIgaGVpZ2h0PSIyOCIgZmlsbD0iI2ZmNjY0NCIvPgogIDwhLS0gQm94IGJvZHkgYm90dG9tIC0tPgogIDxyZWN0IHg9IjgiIHk9IjU2IiB3aWR0aD0iNDgiIGhlaWdodD0iNCIgZmlsbD0iIzdaMTgwMCIvPgoKICA8IS0tIFZlcnRpY2FsIHJpYmJvbiBvbiBib3ggLS0+CiAgPHJlY3QgeD0iMjgiIHk9IjMyIiB3aWR0aD0iOCIgaGVpZ2h0PSIyOCIgZmlsbD0iI2Y3ZDAwMCIvPgogIDwhLS0gUmliYm9uIHNoYWRpbmcgLS0+CiAgPHJlY3QgeD0iMzMiIHk9IjMyIiB3aWR0aD0iMyIgaGVpZ2h0PSIyOCIgZmlsbD0iI2Q0YTgwMCIvPgogIDwhLS0gUmliYm9uIGhpZ2hsaWdodCAtLT4KICA8cmVjdCB4PSIyOCIgeT0iMzIiIHdpZHRoPSIyIiBoZWlnaHQ9IjI4IiBmaWxsPSIjZmZlOTVhIi8+CgogIDwhLS0gQm94IGxpZCAtLT4KICA8cmVjdCB4PSI0IiB5PSIyNCIgd2lkdGg9IjU2IiBoZWlnaHQ9IjEyIiBmaWxsPSIjZmY1NTI1Ii8+CiAgPCEtLSBMaWQgc2hhZGluZyAtLT4KICA8cmVjdCB4PSI1MiIgeT0iMjQiIHdpZHRoPSI4IiBoZWlnaHQ9IjEyIiBmaWxsPSIjY2MzMzEwIi8+CiAgPCEtLSBMaWQgaGlnaGxpZ2h0IC0tPgogIDxyZWN0IHg9IjQiIHk9IjI0IiB3aWR0aD0iNCIgaGVpZ2h0PSIxMiIgZmlsbD0iI2ZmNzc1NSIvPgogIDwhLS0gTGlkIHRvcCBlZGdlIC0tPgogIDxyZWN0IHg9IjQiIHk9IjI0IiB3aWR0aD0iNTYiIGhlaWdodD0iMyIgZmlsbD0iI2ZmNzc1NSIvPgogIDwhLS0gTGlkIGJvdHRvbSBlZGdlIC0tPgogIDxyZWN0IHg9IjQiIHk9IjMzIiB3aWR0aD0iNTYiIGhlaWdodD0iMyIgZmlsbD0iI2FhMjIwMCIvPgoKICA8IS0tIEhvcml6b250YWwgcmliYm9uIG9uIGxpZCAtLT4KICA8cmVjdCB4PSI0IiB5PSIyNyIgd2lkdGg9IjU2IiBoZWlnaHQ9IjYiIGZpbGw9IiNmN2QwMDAiLz4KICA8IS0tIFJpYmJvbiBzaGFkaW5nIG9uIGxpZCAtLT4KICA8cmVjdCB4PSI0IiB5PSIzMSIgd2lkdGg9IjU2IiBoZWlnaHQ9IjIiIGZpbGw9IiNkNGE4MDAiLz4KICA8IS0tIFJpYmJvbiBoaWdobGlnaHQgb24gbGlkIC0tPgogIDxyZWN0IHg9IjQiIHk9IjI3IiB3aWR0aD0iNTYiIGhlaWdodD0iMiIgZmlsbD0iI2ZmZTk1YSIvPgoKICA8IS0tIEJvdyBsZWZ0IGxvb3AgKG91dGVyKSAtLT4KICA8cmVjdCB4PSIxNCIgeT0iMTIiIHdpZHRoPSIxMiIgaGVpZ2h0PSIxNCIgZmlsbD0iI2Y3ZDAwMCIvPgogIDxyZWN0IHg9IjEyIiB5PSIxNCIgd2lkdGg9IjE0IiBoZWlnaHQ9IjEwIiBmaWxsPSIjZjdkMDAwIi8+CiAgPCEtLSBCb3cgbGVmdCBsb29wIChpbm5lciBob2xlKSAtLT4KICA8cmVjdCB4PSIxNiIgeT0iMTUiIHdpZHRoPSI2IiBoZWlnaHQ9IjciIGZpbGw9IiNjYzMzMTAiLz4KICA8IS0tIEJvdyBsZWZ0IHNoYWRpbmcgLS0+CiAgPHJlY3QgeD0iMjIiIHk9IjEyIiB3aWR0aD0iNCIgaGVpZ2h0PSIxNCIgZmlsbD0iI2Q0YTgwMCIvPgoKICA8IS0tIEJvdyByaWdodCBsb29wIChvdXRlcikgLS0+CiAgPHJlY3QgeD0iMzgiIHk9IjEyIiB3aWR0aD0iMTIiIGhlaWdodD0iMTQiIGZpbGw9IiNmN2QwMDAiLz4KICA8cmVjdCB4PSIzOCIgeT0iMTQiIHdpZHRoPSIxNCIgaGVpZ2h0PSIxMCIgZmlsbD0iI2Y3ZDAwMCIvPgogIDwhLS0gQm93IHJpZ2h0IGxvb3AgKGlubmVyIGhvbGUpIC0tPgogIDxyZWN0IHg9IjQyIiB5PSIxNSIgd2lkdGg9IjYiIGhlaWdodD0iNyIgZmlsbD0iI2NjMzMxMCIvPgogIDwhLS0gQm93IHJpZ2h0IGhpZ2hsaWdodCAtLT4KICA8cmVjdCB4PSIzOCIgeT0iMTIiIHdpZHRoPSI0IiBoZWlnaHQ9IjE0IiBmaWxsPSIjZmZlOTVhIi8+CgogIDwhLS0gQm93IGNlbnRlciBrbm90IC0tPgogIDxyZWN0IHg9IjI2IiB5PSIxNCIgd2lkdGg9IjEyIiBoZWlnaHQ9IjEwIiBmaWxsPSIjZmZlOTVhIi8+CiAgPHJlY3QgeD0iMjgiIHk9IjE2IiB3aWR0aD0iOCIgaGVpZ2h0PSI2IiBmaWxsPSIjZjdkMDAwIi4+CiAgPHJlY3QgeD0iMzAiIHk9IjE3IiB3aWR0aD0iNCIgaGVpZ2h0PSI0IiBmaWxsPSIjZDRhODAwIi8+CgogIDwhLS0gQm93IGxlZnQgdGFpbCAtLT4KICA8cmVjdCB4PSIxOCIgeT0iMjQiIHdpZHRoPSI2IiBoZWlnaHQ9IjYiIGZpbGw9IiNmN2QwMDAiLz4KICA8cmVjdCB4PSIxNiIgeT0iMjYiIHdpZHRoPSI0IiBoZWlnaHQ9IjQiIGZpbGw9IiNkNGE4MDAiLz4KCiAgPCEtLSBCb3cgcmlnaHQgdGFpbCAtLT4KICA8cmVjdCB4PSI0MCIgeT0iMjQiIHdpZHRoPSI2IiBoZWlnaHQ9IjYiIGZpbGw9IiNmN2QwMDAiLz4KICA8cmVjdCB4PSI0MiIgeT0iMjYiIHdpZHRoPSI0IiBoZWlnaHQ9IjQiIGZpbGw9IiNmZmU5NWEiLz4KCiAgPCEtLSBTdGFycyAvIHNwYXJrbGVzIC0tPgogIDxyZWN0IHg9IjIiIHk9IjgiIHdpZHRoPSI0IiBoZWlnaHQ9IjQiIGZpbGw9IiNmN2QwMDAiLz4KICA8cmVjdCB4PSI0IiB5PSI2IiB3aWR0aD0iNCIgaGVpZ2h0PSIyIiBmaWxsPSIjZjdkMDAwIi8+CiAgPHJlY3QgeD0iNCIgeT0iMTAiIHdpZHRoPSI0IiBoZWlnaHQ9IjIiIGZpbGw9IiNmN2QwMDAiLz4KCiAgPHJlY3QgeD0iNTYiIHk9IjQiIHdpZHRoPSI0IiBoZWlnaHQ9IjQiIGZpbGw9IiNmN2QwMDAiLz4KICA8cmVjdCB4PSI1OCIgeT0iMiIgd2lkdGg9IjQiIGhlaWdodD0iMiIgZmlsbD0iI2Y3ZDAwMCIvPgogIDxyZWN0IHg9IjU4IiB5PSI6IiB3aWR0aD0iNCIgaGVpZ2h0PSIyIiBmaWxsPSIjZjdkMDAwIi8+CgogIDxyZWN0IHg9IjAiIHk9IjQwIiB3aWR0aD0iMyIgaGVpZ2h0PSIzIiBmaWxsPSIjZmZmZmZmIiBvcGFjaXR5PSIwLjYiLz4KICA8cmVjdCB4PSI2MSIgeT0iNDQiIHdpZHRoPSIzIiBoZWlnaHQ9IjMiIGZpbGw9IiNmZmZmZmYiIG9wYWNpdHk9IjAuNiIvPgo8L3N2Zz4K" alt="gift">
+      <img class="gbe" id="ge" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCIgc2hhcGUtcmVuZGVyaW5nPSJjcmlzcEVkZ2VzIj4KICA8IS0tIFNoYWRvdyAtLT4KICA8cmVjdCB4PSI4IiB5PSI1OCIgd2lkdGg9IjQ4IiBoZWlnaHQ9IjQiIGZpbGw9IiMxYTBhMDAiIG9wYWNpdHk9IjAuMyIvPgoKICA8IS0tIEJveCBib2R5IC0tPgogIDxyZWN0IHg9IjgiIHk9IjMyIiB3aWR0aD0iNDgiIGhlaWdodD0iMjgiIGZpbGw9IiNlODM0MGEiLz4KICA8IS0tIEJveCBib2R5IHNoYWRpbmcgKHJpZ2h0KSAtLT4KICA8cmVjdCB4PSI0OCIgeT0iMzIiIHdpZHRoPSI4IiBoZWlnaHQ9IjI4IiBmaWxsPSIjYjUyNDBhIi8+CiAgPCEtLSBCb3ggYm9keSBoaWdobGlnaHQgKGxlZnQpIC0tPgogIDxyZWN0IHg9IjgiIHk9IjMyIiB3aWR0aD0iNCIgaGVpZ2h0PSIyOCIgZmlsbD0iI2ZmNjY0NCIvPgogIDwhLS0gQm94IGJvZHkgYm90dG9tIC0tPgogIDxyZWN0IHg9IjgiIHk9IjU2IiB3aWR0aD0iNDgiIGhlaWdodD0iNCIgZmlsbD0iIzdhMTgwMCIvPgoKICA8IS0tIFZlcnRpY2FsIHJpYmJvbiBvbiBib3ggLS0+CiAgPHJlY3QgeD0iMjgiIHk9IjMyIiB3aWR0aD0iOCIgaGVpZ2h0PSIyOCIgZmlsbD0iI2Y3ZDAwMCIvPgogIDwhLS0gUmliYm9uIHNoYWRpbmcgLS0+CiAgPHJlY3QgeD0iMzMiIHk9IjMyIiB3aWR0aD0iMyIgaGVpZ2h0PSIyOCIgZmlsbD0iI2Q0YTgwMCIvPgogIDwhLS0gUmliYm9uIGhpZ2hsaWdodCAtLT4KICA8cmVjdCB4PSIyOCIgeT0iMzIiIHdpZHRoPSIyIiBoZWlnaHQ9IjI4IiBmaWxsPSIjZmZlOTVhIi8+CgogIDwhLS0gQm94IGxpZCAtLT4KICA8cmVjdCB4PSI0IiB5PSIyNCIgd2lkdGg9IjU2IiBoZWlnaHQ9IjEyIiBmaWxsPSIjZmY1NTI1Ii8+CiAgPCEtLSBMaWQgc2hhZGluZyAtLT4KICA8cmVjdCB4PSI1MiIgeT0iMjQiIHdpZHRoPSI4IiBoZWlnaHQ9IjEyIiBmaWxsPSIjY2MzMzEwIi8+CiAgPCEtLSBMaWQgaGlnaGxpZ2h0IC0tPgogIDxyZWN0IHg9IjQiIHk9IjI0IiB3aWR0aD0iNCIgaGVpZ2h0PSIxMiIgZmlsbD0iI2ZmNzc1NSIvPgogIDwhLS0gTGlkIHRvcCBlZGdlIC0tPgogIDxyZWN0IHg9IjQiIHk9IjI0IiB3aWR0aD0iNTYiIGhlaWdodD0iMyIgZmlsbD0iI2ZmNzc1NSIvPgogIDwhLS0gTGlkIGJvdHRvbSBlZGdlIC0tPgogIDxyZWN0IHg9IjQiIHk9IjMzIiB3aWR0aD0iNTYiIGhlaWdodD0iMyIgZmlsbD0iI2FhMjIwMCIvPgoKICA8IS0tIEhvcml6b250YWwgcmliYm9uIG9uIGxpZCAtLT4KICA8cmVjdCB4PSI0IiB5PSIyNyIgd2lkdGg9IjU2IiBoZWlnaHQ9IjYiIGZpbGw9IiNmN2QwMDAiLz4KICA8IS0tIFJpYmJvbiBzaGFkaW5nIG9uIGxpZCAtLT4KICA8cmVjdCB4PSI0IiB5PSIzMSIgd2lkdGg9IjU2IiBoZWlnaHQ9IjIiIGZpbGw9IiNkNGE4MDAiLz4KICA8IS0tIFJpYmJvbiBoaWdobGlnaHQgb24gbGlkIC0tPgogIDxyZWN0IHg9IjQiIHk9IjI3IiB3aWR0aD0iNTYiIGhlaWdodD0iMiIgZmlsbD0iI2ZmZTk1YSIvPgoKICA8IS0tIEJvdyBsZWZ0IGxvb3AgKG91dGVyKSAtLT4KICA8cmVjdCB4PSIxNCIgeT0iMTIiIHdpZHRoPSIxMiIgaGVpZ2h0PSIxNCIgZmlsbD0iI2Y3ZDAwMCIvPgogIDxyZWN0IHg9IjEyIiB5PSIxNCIgd2lkdGg9IjE0IiBoZWlnaHQ9IjEwIiBmaWxsPSIjZjdkMDAwIi8+CiAgPCEtLSBCb3cgbGVmdCBsb29wIChpbm5lciBob2xlKSAtLT4KICA8cmVjdCB4PSIxNiIgeT0iMTUiIHdpZHRoPSI2IiBoZWlnaHQ9IjciIGZpbGw9IiNjYzMzMTAiLz4KICA8IS0tIEJvdyBsZWZ0IHNoYWRpbmcgLS0+CiAgPHJlY3QgeD0iMjIiIHk9IjEyIiB3aWR0aD0iNCIgaGVpZ2h0PSIxNCIgZmlsbD0iI2Q0YTgwMCIvPgoKICA8IS0tIEJvdyByaWdodCBsb29wIChvdXRlcikgLS0+CiAgPHJlY3QgeD0iMzgiIHk9IjEyIiB3aWR0aD0iMTIiIGhlaWdodD0iMTQiIGZpbGw9IiNmN2QwMDAiLz4KICA8cmVjdCB4PSIzOCIgeT0iMTQiIHdpZHRoPSIxNCIgaGVpZ2h0PSIxMCIgZmlsbD0iI2Y3ZDAwMCIvPgogIDwhLS0gQm93IHJpZ2h0IGxvb3AgKGlubmVyIGhvbGUpIC0tPgogIDxyZWN0IHg9IjQyIiB5PSIxNSIgd2lkdGg9IjYiIGhlaWdodD0iNyIgZmlsbD0iI2NjMzMxMCIvPgogIDwhLS0gQm93IHJpZ2h0IGhpZ2hsaWdodCAtLT4KICA8cmVjdCB4PSIzOCIgeT0iMTIiIHdpZHRoPSI0IiBoZWlnaHQ9IjE0IiBmaWxsPSIjZmZlOTVhIi8+CgogIDwhLS0gQm93IGNlbnRlciBrbm90IC0tPgogIDxyZWN0IHg9IjI2IiB5PSIxNCIgd2lkdGg9IjEyIiBoZWlnaHQ9IjEwIiBmaWxsPSIjZmZlOTVhIi8+CiAgPHJlY3QgeD0iMjgiIHk9IjE2IiB3aWR0aD0iOCIgaGVpZ2h0PSI2IiBmaWxsPSIjZjdkMDAwIi8+CiAgPHJlY3QgeD0iMzAiIHk9IjE3IiB3aWR0aD0iNCIgaGVpZ2h0PSI0IiBmaWxsPSIjZDRhODAwIi8+CgogIDwhLS0gQm93IGxlZnQgdGFpbCAtLT4KICA8cmVjdCB4PSIxOCIgeT0iMjQiIHdpZHRoPSI2IiBoZWlnaHQ9IjYiIGZpbGw9IiNmN2QwMDAiLz4KICA8cmVjdCB4PSIxNiIgeT0iMjYiIHdpZHRoPSI0IiBoZWlnaHQ9IjQiIGZpbGw9IiNkNGE4MDAiLz4KCiAgPCEtLSBCb3cgcmlnaHQgdGFpbCAtLT4KICA8cmVjdCB4PSI0MCIgeT0iMjQiIHdpZHRoPSI2IiBoZWlnaHQ9IjYiIGZpbGw9IiNmN2QwMDAiLz4KICA8cmVjdCB4PSI0MiIgeT0iMjYiIHdpZHRoPSI0IiBoZWlnaHQ9IjQiIGZpbGw9IiNmZmU5NWEiLz4KCiAgPCEtLSBTdGFycyAvIHNwYXJrbGVzIC0tPgogIDxyZWN0IHg9IjIiIHk9IjgiIHdpZHRoPSI0IiBoZWlnaHQ9IjQiIGZpbGw9IiNmN2QwMDAiLz4KICA8cmVjdCB4PSI0IiB5PSI2IiB3aWR0aD0iNCIgaGVpZ2h0PSIyIiBmaWxsPSIjZjdkMDAwIi8+CiAgPHJlY3QgeD0iNCIgeT0iMTAiIHdpZHRoPSI0IiBoZWlnaHQ9IjIiIGZpbGw9IiNmN2QwMDAiLz4KCiAgPHJlY3QgeD0iNTYiIHk9IjQiIHdpZHRoPSI0IiBoZWlnaHQ9IjQiIGZpbGw9IiNmN2QwMDAiLz4KICA8cmVjdCB4PSI1OCIgeT0iMiIgd2lkdGg9IjQiIGhlaWdodD0iMiIgZmlsbD0iI2Y3ZDAwMCIvPgogIDxyZWN0IHg9IjU4IiB5PSI2IiB3aWR0aD0iNCIgaGVpZ2h0PSIyIiBmaWxsPSIjZjdkMDAwIi8+CgogIDxyZWN0IHg9IjAiIHk9IjQwIiB3aWR0aD0iMyIgaGVpZ2h0PSIzIiBmaWxsPSIjZmZmZmZmIiBvcGFjaXR5PSIwLjYiLz4KICA8cmVjdCB4PSI2MSIgeT0iNDQiIHdpZHRoPSIzIiBoZWlnaHQ9IjMiIGZpbGw9IiNmZmZmZmYiIG9wYWNpdHk9IjAuNiIvPgo8L3N2Zz4K" alt="gift">
       <div class="gbt" id="gt"></div>
       <div class="gbm" id="gmsg"></div>
-      <button class="gbc" onclick="closeModal()">Continue â¶</button>
+      <button class="gbc" onclick="closeModal()">Continue ▶</button>
     </div>
   </div>
 
   <div id="tc">
     <div class="tg">
-      <div class="tb" id="tbL">â</div>
-      <div class="tb" id="tbR">â¶</div>
+      <div class="tb" id="tbL">◀</div>
+      <div class="tb" id="tbR">▶</div>
     </div>
     <div class="tg">
-      <div class="tb" id="tbJ">â¬</div>
+      <div class="tb" id="tbJ">⬆</div>
     </div>
   </div>
 
   <!-- NFC splash (shown when ?nfc=1 in URL) -->
   <div id="nfcSplash" style="display:none">
     <div class="nfc-stars" id="nfcStars"></div>
-    <div class="nfc-shroom">ð</div>
+    <div class="nfc-shroom">🍄</div>
     <div class="nfc-title">KEYCHAIN ACTIVATED!</div>
     <div class="nfc-sub">Pranav, you found it!<br>Your birthday adventure is about to begin...</div>
-    <div class="nfc-tap">â¶ TAP TO START â</div>
+    <div class="nfc-tap">▶ TAP TO START ◀</div>
   </div>
 </div>
 
 <canvas id="cfc"></canvas>
 
-<script>// CANVAS
-// ââââââââââââââââââââââââââââââââââââââââââ
-var canvas = document.getElementById('gc');
-var ctx    = canvas.getContext('2d');
-var CW = 800, CH = 500;
+<script>
+// ══════════════════════════════════════════
+// 🎁 GIFTS — replace placeholder messages!
+// ══════════════════════════════════════════
+const GIFTS = [
+  {
+    id: 0,
+    unlock: new Date(2026, 9, 8),    // Oct 8
+    label: 'Oct 8',
+    emoji: '🎁',
+    title: 'Surprise #1 Unlocked! 🍄',
+    msg: 'I got you something 20 something years too late but better late than never right? I hope gift #1 reminds you that play is always the right answer, and to have the courage to chase your desires\n\nGuess what it is to get your gift 🕹️'
+  },
+  {
+    id: 1,
+    unlock: new Date(2026, 9, 9),    // Oct 9
+    label: 'Oct 9',
+    emoji: '⭐',
+    title: 'Surprise #2 Unlocked! 🍄',
+    msg: "This one's for the creative side of you that deserves more airtime 🎨\n\nGuess what it is to get your gift ✏️"
+  },
+  {
+    id: 2,
+    unlock: new Date(2026, 9, 10),   // Oct 10
+    label: 'Oct 10',
+    emoji: '🌟',
+    title: 'Surprise #3 Unlocked! 🍄',
+    msg: "One more day!! Fair warning, this one you're going to smell before you even open it 👃\n\nGuess what it is to get your gift"
+  },
+  {
+    id: 3,
+    unlock: new Date(2026, 9, 11),   // Oct 11 — BIRTHDAY!
+    label: 'Oct 11 🎂',
+    emoji: '🎂',
+    title: 'HAPPY BIRTHDAY!! 🎉🎊',
+    msg: "HAPPY 30!! 🥳\n\nOkay this is the one I've been most excited about. You've been talking about this forever and I finally did something about it\n\nGuess what it is to get your gift 🎛️"
+  }
+];
 
-// ââââââââââââââââââââââââââââââââââââââââââ
+// ══════════════════════════════════════════
+// CANVAS
+// ══════════════════════════════════════════
+const canvas = document.getElementById('gc');
+const ctx    = canvas.getContext('2d');
+const CW = 800, CH = 500;
+
+// ══════════════════════════════════════════
 // PERSISTENCE
-// ââââââââââââââââââââââââââââââââââââââââââ
-var saved = [];
+// ══════════════════════════════════════════
+let saved = [];
 try { saved = JSON.parse(localStorage.getItem('bdayV2') || '[]'); } catch(e){}
 function persist() { try { localStorage.setItem('bdayV2', JSON.stringify(saved)); } catch(e){} }
 
@@ -454,9 +496,9 @@ function daysUntil(d) {
   return Math.max(0, Math.ceil((d - n) / 86400000));
 }
 
-// ââââââââââââââââââââââââââââââââââââââââââ
+// ══════════════════════════════════════════
 // START SCREEN
-// ââââââââââââââââââââââââââââââââââââââââââ
+// ══════════════════════════════════════════
 function buildGrid() {
   const el = document.getElementById('gg');
   el.innerHTML = '';
@@ -466,7 +508,7 @@ function buildGrid() {
     d.className = `gc${got?' got':ul?' ul':''}`;
     d.innerHTML = `
       <div class="gd">${g.label}</div>
-      <div class="gi">${got?'â':ul?g.emoji:'ð'}</div>
+      <div class="gi">${got?'✅':ul?g.emoji:'🔒'}</div>
       <div class="gs">${got?'Found!':ul?'Ready!':'in '+daysUntil(g.unlock)+'d'}</div>`;
     el.appendChild(d);
   });
@@ -485,12 +527,12 @@ function goHome() {
   document.getElementById('ss').style.display = 'flex';
 }
 
-// ââââââââââââââââââââââââââââââââââââââââââ
+// ══════════════════════════════════════════
 // WORLD  (3 400 px wide)
-// ââââââââââââââââââââââââââââââââââââââââââ
-var GY = 440, WW = 3400;
+// ══════════════════════════════════════════
+const GY = 440, WW = 3400;
 
-var PLATS = [
+const PLATS = [
   {x:0,    y:GY,   w:WW,  h:60},
 
   {x:190,  y:352,  w:130, h:18},
@@ -519,15 +561,15 @@ var PLATS = [
   {x:3012, y:358,  w:160, h:18},
 ];
 
-var QBLKS  = [{x:340,y:202},{x:804,y:142},{x:1572,y:96},{x:2228,y:72}];
-var BRICKS = [
+const QBLKS  = [{x:340,y:202},{x:804,y:142},{x:1572,y:96},{x:2228,y:72}];
+const BRICKS = [
   {x:80,y:GY-70},{x:96,y:GY-70},{x:112,y:GY-70},
   {x:654,y:GY-70},{x:670,y:GY-70},
   {x:2672,y:GY-86},{x:2688,y:GY-86},{x:2704,y:GY-86},
 ];
-var PIPES = [{x:446,h:78},{x:1112,h:64},{x:2520,h:98}];
+const PIPES = [{x:446,h:78},{x:1112,h:64},{x:2520,h:98}];
 
-var MUSHS = [
+const MUSHS = [
   {x:226,  y:352-30, gId:0, got:false, sl:false, st:null},
   {x:872,  y:224-30, gId:1, got:false, sl:false, st:null},
   {x:1652, y:178-30, gId:2, got:false, sl:false, st:null},
@@ -535,27 +577,27 @@ var MUSHS = [
 ];
 MUSHS.forEach(m => { if(isGot(GIFTS[m.gId])) m.got = true; });
 
-var CLOUDS = Array.from({length:22}, (_,i) => ({
+const CLOUDS = Array.from({length:22}, (_,i) => ({
   x: i*182+Math.random()*80, y:32+Math.random()*72, s:.72+Math.random()*.82
 }));
-var HILLS = Array.from({length:16}, (_,i) => ({
+const HILLS = Array.from({length:16}, (_,i) => ({
   x: i*242+Math.random()*80, r:105+Math.random()*115
 }));
 
-// ââââââââââââââââââââââââââââââââââââââââââ
+// ══════════════════════════════════════════
 // PLAYER
-// ââââââââââââââââââââââââââââââââââââââââââ
-var P = {
+// ══════════════════════════════════════════
+const P = {
   x:52, y:GY-50, w:28, h:48,
   vx:0, vy:0, onGround:false,
   dir:1, frame:0, fT:0, moving:false, jumping:false,
 };
-var GRAV=0.52, JUMP=-12, SPD=4.3, MFALL=14;
+const GRAV=0.52, JUMP=-12, SPD=4.3, MFALL=14;
 
-// ââââââââââââââââââââââââââââââââââââââââââ
+// ══════════════════════════════════════════
 // INPUT
-// ââââââââââââââââââââââââââââââââââââââââââ
-var keys = {};
+// ══════════════════════════════════════════
+const keys = {};
 
 window.addEventListener('keydown', e => {
   keys[e.code] = true;
@@ -592,18 +634,18 @@ function doJump() {
   sfxJump(); buzz(18);
 }
 
-// âââââââââââââââââââââââââââââââââ
+// ═════════════════════════════════
 // CAMERA
-// ââââââââââââââââââââââââââââââââââââââââââ
-var camX = 0;
+// ══════════════════════════════════════════
+let camX = 0;
 function updateCam() {
   camX += (P.x - CW/3 - camX) * 0.09;
   camX = Math.max(0, Math.min(WW - CW, camX));
 }
 
-// ââââââââââââââââââââââââââââââââââââââââââ
+// ══════════════════════════════════════════
 // PHYSICS + COLLISION
-// ââââââââââââââââââââââââââââââââââââââââââ
+// ══════════════════════════════════════════
 function update() {
   P.moving = false;
   if(keys['ArrowLeft'])       { P.vx=-SPD; P.dir=-1; P.moving=true; }
@@ -652,11 +694,11 @@ function update() {
   updateCam();
 }
 
-// ââââââââââââââââââââââââââââââââââââââââââ
+// ══════════════════════════════════════════
 // PARTICLES
-// ââââââââââââââââââââââââââââââââââââââââââ
-var parts = [];
-var PCOLS = ['#FFD700','#FF6B6B','#4ECDC4','#fff','#C792EA','#68EF8A'];
+// ══════════════════════════════════════════
+let parts = [];
+const PCOLS = ['#FFD700','#FF6B6B','#4ECDC4','#fff','#C792EA','#68EF8A'];
 
 function spawnParts(x, y) {
   for(let i=0;i<18;i++) {
@@ -675,9 +717,9 @@ function tickParts() {
   parts.forEach(p => { p.x+=p.vx; p.y+=p.vy; p.vy+=0.38; p.l-=0.022; });
 }
 
-// ââââââââââââââââââââââââââââââââââââââââââ
-// DRAW â BACKGROUND
-// ââââââââââââââââââââââââââââââââââââââââââ
+// ══════════════════════════════════════════
+// DRAW — BACKGROUND
+// ══════════════════════════════════════════
 function dBg() {
   const g = ctx.createLinearGradient(0,0,0,CH);
   g.addColorStop(0,'#4e8aed'); g.addColorStop(1,'#a8c4f8');
@@ -707,9 +749,9 @@ function dClouds(t) {
   });
 }
 
-// ââââââââââââââââââââââââââââââââââââââââââ
-// DRAW â TERRAIN
-// ââââââââââââââââââââââââââââââââââââââââââ
+// ══════════════════════════════════════════
+// DRAW — TERRAIN
+// ══════════════════════════════════════════
 function dGround() {
   ctx.fillStyle='#5b9e38'; ctx.fillRect(0,GY,CW,14);
   ctx.fillStyle='#6cbf42'; ctx.fillRect(0,GY+2,CW,6);
@@ -774,15 +816,15 @@ function dFlag(t) {
   ctx.fill();
 }
 
-// ââââââââââââââââââââââââââââââââââââââââââ
-// DRAW â MUSHROOMS
-// ââââââââââââââââââââââââââââââââââââââââââ
-var CAP_COLS = ['#e03030','#d4922a','#2899c8','#8850d0'];
+// ══════════════════════════════════════════
+// DRAW — MUSHROOMS
+// ══════════════════════════════════════════
+const CAP_COLS = ['#e03030','#d4922a','#2899c8','#8850d0'];
 
 function dMush(m, t) {
   const gift = GIFTS[m.gId];
   const sx = m.x - camX;
-  if(sx>CV+30||sx<-30) return;
+  if(sx>CW+30||sx<-30) return;
 
   const ul = isUnlocked(gift);
   const bob = m.got ? 0 : Math.sin(t*.004+m.gId*1.4)*3.5;
@@ -828,9 +870,9 @@ function dMush(m, t) {
 
 function dMushs(t) { MUSHS.forEach(m => dMush(m,t)); }
 
-// ââââââââââââââââââââââââââââââââââââââââââ
+// ══════════════════════════════════════════
 // PLAYER DRAWING (pixel-art Mario-style)
-// ââââââââââââââââââââââââââââââââââââââââââ
+// ══════════════════════════════════════════
 function dPlayer() {
   const sx = Math.round(P.x - camX);
   const sy = Math.round(P.y);
@@ -927,9 +969,9 @@ function dPlayer() {
   ctx.restore();
 }
 
-// ââââââââââââââââââââââââââââââââââââââââââ
+// ══════════════════════════════════════════
 // PARTICLES
-// ââââââââââââââââââââââââââââââââââââââââââ
+// ══════════════════════════════════════════
 function dParts() {
   parts.forEach(p => {
     ctx.globalAlpha = Math.max(0,p.l);
@@ -940,23 +982,23 @@ function dParts() {
   ctx.globalAlpha = 1;
 }
 
-// ââââââââââââââââââââââââââââââââââââââââââ
+// ══════════════════════════════════════════
 // HUD
-// ââââââââââââââââââââââââââââââââââââââââââ
+// ══════════════════════════════════════════
 function updateHUD() {
   MUSHS.forEach((m,i) => {
     const el = document.getElementById('h'+i);
     if(!el) return;
     const ul = isUnlocked(GIFTS[m.gId]);
     if(m.got) {
-      el.textContent = 'â';
+      el.textContent = '✅';
       el.classList.add('got');
     } else if(ul) {
-      el.textContent = 'ð';
+      el.textContent = '🍄';
       el.classList.remove('got');
       el.style.opacity = '1';
     } else {
-      el.textContent = 'ð';
+      el.textContent = '🍄';
       el.classList.remove('got');
       el.style.opacity = '0.38';
     }
@@ -964,10 +1006,10 @@ function updateHUD() {
 }
 updateHUD();
 
-// ââââââââââââââââââââââââââââââââââââââââââ
-// AUDIO (Web Audio API â no external deps)
-// ââââââââââââââââââââââââââââââââââââââââââ
-var AC = null;
+// ══════════════════════════════════════════
+// AUDIO (Web Audio API — no external deps)
+// ══════════════════════════════════════════
+let AC = null;
 function ac() {
   if(!AC) try { AC = new (window.AudioContext||window.webkitAudioContext)(); } catch(e){}
   return AC;
@@ -988,10 +1030,10 @@ function sfxJump() { tone(310,0.06); setTimeout(()=>tone(420,0.09),45); }
 function sfxCoin() { tone(660,0.07); setTimeout(()=>tone(880,0.13),55); }
 function buzz(pat) { try { navigator.vibrate(pat); } catch(e){} }
 
-// ââââââââââââââââââââââââââââââââââââââââââ
+// ══════════════════════════════════════════
 // CONFETTI CANVAS (#cfc)
-// ââââââââââââââââââââââââââââââââââââââââââ
-var cfcEl, cfcCtx, cparts=[];
+// ══════════════════════════════════════════
+let cfcEl, cfcCtx, cparts=[];
 function launchConfetti() {
   cfcEl = document.getElementById('cfc');
   if(!cfcEl) return;
@@ -1023,10 +1065,10 @@ function animConf() {
   requestAnimationFrame(animConf);
 }
 
-// ââââââââââââââââââââââââââââââââââââââââââ
+// ══════════════════════════════════════════
 // GIFT MODAL
-// ââââââââââââââââââââââââââââââââââââââââââ
-var mOpen = false;
+// ══════════════════════════════════════════
+let mOpen = false;
 
 function openModal(g) {
   mOpen = true;
@@ -1042,9 +1084,9 @@ function closeModal() {
   document.getElementById('gm').classList.remove('on');
 }
 
-// ââââââââââââââââââââââââââââââââââââââââââ
+// ══════════════════════════════════════════
 // NFC SPLASH SCREEN
-// ââââââââââââââââââââââââââââââââââââââââââ
+// ══════════════════════════════════════════
 (function initNfc() {
   const params = new URLSearchParams(location.search);
   if(!params.has('nfc')) return;
@@ -1056,7 +1098,7 @@ function closeModal() {
     for(let i=0;i<18;i++){
       const s=document.createElement('div');
       s.className='nfc-star';
-      s.textContent=['â­','â¨','ð','ð','ð'][i%5];
+      s.textContent=['⭐','✨','🌟','🎉','🎊'][i%5];
       s.style.cssText=`left:${Math.random()*90+5}%;animation-duration:${3+Math.random()*4}s;animation-delay:${Math.random()*3}s;`;
       starsEl.appendChild(s);
     }
@@ -1064,10 +1106,10 @@ function closeModal() {
   splash.addEventListener('click', ()=>{ splash.style.display='none'; }, {once:true});
 })();
 
-// ââââââââââââââââââââââââââââââââââââââââââ
+// ══════════════════════════════════════════
 // MAIN GAME LOOP
-// ââââââââââââââââââââââââââââââââââââââââââ
-var running = false;
+// ══════════════════════════════════════════
+let running = false;
 
 function draw(t) {
   dBg();
