@@ -66,17 +66,27 @@ html, body {
     overflow-y: auto;
     gap: 0;
   }
-  .ss-title {
+  #wrap #ss { padding-top: 40px; }
+  #ss .ss-cake { margin-bottom: 22px; }
+  #ss .candles { height: 28px; gap: 16px; }
+  #ss .ss-title {
     font-size: clamp(.6rem, 4.2vw, .95rem);
-    padding: 8px 14px;
-    margin-bottom: 6px;
+    padding: 22px 16px 10px;
     line-height: 1.8;
   }
-  .ss-sub {
+  #ss .ss-title::after { left: -10px; right: -10px; }
+  #ss .ss-sub {
     font-size: clamp(.3rem, 2.2vw, .44rem);
-    margin-bottom: 10px;
+    margin-bottom: 12px;
     line-height: 2.2;
+    padding: 10px 14px 12px;
   }
+  #ss .gift-a, #ss .gift-b { width: 38px; height: 36px; }
+  #ss .cup { width: 36px; height: 36px; }
+  #ss .gift-c { width: 30px; height: 28px; }
+  #ss .p1 { left: 4%; } #ss .p2 { left: 24%; } #ss .p3 { right: 24%; } #ss .p4 { right: 4%; }
+  #ss .bal { bottom: 34px; width: 22px; height: 40px; }
+  #ss .b2 { left: 18px; bottom: 44px; } #ss .b3 { left: 9px; }
   /* 2×2 gift grid instead of 4-in-a-row */
   .gg {
     display: grid !important;
@@ -148,37 +158,95 @@ html, body {
   pointer-events: none;
 }
 
-.ss-qb {
-  position: absolute;
-  width: 28px; height: 28px;
-  background: #e8a020;
-  border: 3px solid #000;
-  box-shadow: inset -3px -3px 0 #c07010, inset 3px 3px 0 #f0c840;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 14px; font-family: 'Press Start 2P', monospace;
-  color: #7a4a00; pointer-events: none;
+/* Birthday bunting */
+.ss-bunting {
+  position: absolute; top: 6px; left: 0; right: 0; height: 30px; z-index: 1;
+  display: flex; justify-content: space-around; pointer-events: none;
+  background: linear-gradient(#fff, #fff) 0 0 / 100% 2px no-repeat;
+}
+.ss-bunting i {
+  width: 22px; height: 26px; margin-top: 2px;
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+  background: #ff6fa5; transform-origin: top center;
+  animation: flap 2.4s ease-in-out infinite alternate;
+}
+.ss-bunting i:nth-child(4n+2) { background: #ffd23f; animation-delay: -.6s; }
+.ss-bunting i:nth-child(4n+3) { background: #3ec7c2; animation-delay: -1.2s; }
+.ss-bunting i:nth-child(4n+4) { background: #fff; animation-delay: -1.8s; }
+@keyframes flap { from { transform: rotate(-4deg); } to { transform: rotate(4deg); } }
+
+/* Pixel-art party props sitting on the bricks */
+.ss-props { position: absolute; inset: 0; pointer-events: none; z-index: 1; }
+.prop { position: absolute; bottom: 60px; display: flex; align-items: flex-end; }
+.pp { display: block; image-rendering: pixelated; }
+.gift-a, .gift-b { width: 64px; height: 60px; }
+.gift-c { width: 46px; height: 43px; }
+.cup { width: 58px; height: 58px; }
+.p1 { left: 8%; } .p2 { left: 22%; } .p3 { right: 22%; } .p4 { right: 8%; }
+.bal { position: absolute; bottom: 56px; width: 32px; height: 59px; transform-origin: bottom center; animation: bob 3s ease-in-out infinite; }
+.b1 { left: -4px; }
+.b2 { left: 26px; bottom: 66px; animation-delay: -1s; }
+.b3 { left: 16px; animation-delay: -2s; }
+@keyframes bob { 0%,100% { transform: translateY(0) rotate(-3deg); } 50% { transform: translateY(-6px) rotate(3deg); } }
+.gift-a { animation: wiggle 4s ease-in-out infinite; transform-origin: bottom center; }
+@keyframes wiggle { 0%,88%,100% { transform: rotate(0); } 91% { transform: rotate(-6deg); } 94% { transform: rotate(6deg); } 97% { transform: rotate(-3deg); } }
+
+/* Title = a pixel chocolate cake with frosting + candles */
+.ss-cake { position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center; margin-bottom: 26px; }
+.candles { display: flex; gap: 22px; height: 34px; align-items: flex-end; }
+.candles i {
+  position: relative; width: 10px; height: 20px;
+  border: 2px solid #1a0a00; border-bottom: 0;
+  background: repeating-linear-gradient(180deg, #fff 0 4px, #ff6fa5 4px 8px);
+}
+.candles i::before {
+  content: ''; position: absolute; left: 50%; top: -15px; width: 10px; height: 12px; margin-left: -5px;
+  background: #ffd23f; box-shadow: inset 0 -5px 0 #ff8a1f;
+  clip-path: polygon(50% 0, 100% 55%, 80% 100%, 20% 100%, 0 55%);
+  transform-origin: bottom center;
+  animation: flick .3s steps(2) infinite alternate;
+}
+.candles i:nth-child(2)::before { animation-delay: -.15s; }
+@keyframes flick { to { transform: scale(.85, 1.15) skewX(6deg); } }
+.ss-title {
+  position: relative;
+  background: #7b3f26; color: #ffe066;
+  font-size: clamp(.75rem, 3.2vw, 1.45rem);
+  letter-spacing: 2px; line-height: 1.6;
+  text-shadow: 3px 3px 0 #2b0f05;
+  border: 4px solid #1a0a00;
+  padding: 26px 30px 14px;
+  box-shadow: inset -6px -6px 0 #5a2c18, inset 6px 0 0 #96502f;
+}
+.ss-title .frost { position: absolute; left: 0; top: 0; width: 100%; height: 18px; }
+.ss-title span { position: relative; }
+.ss-title b { display: inline-block; color: #fff; text-shadow: 3px 3px 0 #e2457a; animation: hop 1s steps(2) infinite; }
+@keyframes hop { 50% { transform: translateY(-3px); } }
+/* cake plate */
+.ss-title::after {
+  content: ''; position: absolute; left: -18px; right: -18px; bottom: -14px; height: 8px;
+  background: #f1eef8; border: 3px solid #1a0a00; box-shadow: inset 0 -3px 0 #b9b3cc;
 }
 
-.ss-title {
-  position: relative; z-index: 2;
-  color: #FFD700;
-  font-size: clamp(.7rem, 3vw, 1.35rem);
-  text-shadow: 3px 3px 0 #8B0000, -1px -1px 0 #8B0000, 5px 5px 0 #3a0000;
-  line-height: 2; letter-spacing: 2px; margin-bottom: 4px;
-  background: #c0392b;
-  border: 4px solid #000;
-  box-shadow: inset -4px -4px 0 #7b1a17, inset 4px 4px 0 #e05040, 4px 4px 0 #000;
-  padding: 10px 18px; border-radius: 2px;
-}
+/* Subtitle = retro game dialogue box */
 .ss-sub {
   position: relative; z-index: 2;
-  color: #fff;
-  font-size: clamp(.36rem, 1.3vw, .55rem);
-  line-height: 2.8; margin-bottom: 14px;
-  text-shadow: 1px 1px 0 #000, -1px -1px 0 #000;
-  background: rgba(0,0,0,.45);
-  padding: 6px 14px; border-radius: 2px;
+  max-width: min(600px, 94%);
+  background: #fffaf0; color: #2b1d3a;
+  border: 4px solid #1a0a00;
+  box-shadow: inset -4px -4px 0 #eadfc8, 5px 5px 0 rgba(0,0,0,.3);
+  padding: 12px 20px 14px; margin-bottom: 16px;
+  font-size: clamp(.36rem, 1.25vw, .52rem); line-height: 2.4;
+  display: flex; flex-direction: column; gap: 4px;
 }
+.ss-sub .l1 { color: #c0392b; font-size: 1.12em; }
+.ss-sub .gboy { width: 1em; height: 1.25em; vertical-align: -0.2em; margin-left: 4px; display: inline-block; }
+.ss-sub::after {
+  content: ''; position: absolute; right: 8px; bottom: 6px; width: 8px; height: 6px;
+  background: #2b1d3a; clip-path: polygon(0 0, 100% 0, 50% 100%);
+  animation: blink 1s steps(1) infinite;
+}
+@keyframes blink { 50% { opacity: 0; } }
 
 .gg { position: relative; z-index: 2; display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; margin-bottom: 16px; }
 
@@ -391,12 +459,38 @@ html, body {
 
   <div id="ss">
     <div class="ss-bricks"></div>
-    <div class="ss-qb" style="bottom:60px;left:10%">?</div>
-    <div class="ss-qb" style="bottom:60px;right:10%">?</div>
-    <div class="ss-qb" style="bottom:100px;left:22%">?</div>
-    <div class="ss-qb" style="bottom:100px;right:22%">?</div>
-    <div class="ss-title">🎂 Happy 30 Pranav! 🎂</div>
-    <div class="ss-sub">30 years of not having a Game Boy 🎮<br><br>Since your biggest love language is gifts — here's a game to get yours!</div>
+    <div class="ss-bunting" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+    <div class="ss-props" aria-hidden="true">
+      <div class="prop p1"><i class="bal b1" data-px="bal:pink"></i><i class="bal b2" data-px="bal:aqua"></i><i class="gift-a" data-px="gift:red"></i></div>
+      <div class="prop p2"><i class="cup" data-px="cup:cup"></i></div>
+      <div class="prop p3"><i class="gift-c" data-px="gift:teal"></i></div>
+      <div class="prop p4"><i class="bal b3" data-px="bal:gold"></i><i class="gift-b" data-px="gift:purple"></i></div>
+    </div>
+    <div class="ss-cake">
+      <div class="candles" aria-hidden="true"><i></i><i></i><i></i></div>
+      <div class="ss-title"><svg class="frost" viewBox="0 0 40 6" preserveAspectRatio="none" shape-rendering="crispEdges" aria-hidden="true"><rect width="40" height="2" fill="#ff9ec4"/><rect width="40" height="1" fill="#ffc6dc"/><rect x="1" y="2" width="2" height="3" fill="#ff9ec4"/><rect x="5" y="2" width="1" height="2" fill="#ff9ec4"/><rect x="9" y="2" width="3" height="4" fill="#ff9ec4"/><rect x="15" y="2" width="2" height="2" fill="#ff9ec4"/><rect x="20" y="2" width="1" height="3" fill="#ff9ec4"/><rect x="24" y="2" width="3" height="4" fill="#ff9ec4"/><rect x="30" y="2" width="2" height="2" fill="#ff9ec4"/><rect x="34" y="2" width="1" height="3" fill="#ff9ec4"/><rect x="37" y="2" width="2" height="4" fill="#ff9ec4"/></svg><span>Happy <b>30</b> Pranav!</span></div>
+    </div>
+    <div class="ss-sub"><span class="l1">30 years of not having a Game Boy <i class="gboy" data-px="gboy:gboy"></i></span><span class="l2">Since your biggest love language is gifts — here's a game to get yours!</span></div>
+    <script>
+    // Pixel sprites: each string is one row, each letter a colour key ('.' = transparent).
+    // drawSprites() turns every <i data-px="sprite:palette"> into a crisp SVG.
+    (function drawSprites() {
+      var S = {"gift":["....YY....YY....","...Y..Y..Y..Y...","...Y..YYYY..Y...","....YYYYYYYY....","KKKKKKKYYKKKKKKK","KRRRRRRYYRRRRRrK","KWRRRRRYYRRRRRrK","KKKKKKKYYKKKKKKK",".KRRRRRYYRRRRrK.",".KWRRRRYYRRRRrK.",".KRRRRRYYRRRRrK.",".KRRRRRYYRRRRrK.",".KRRRRRYYRRRRrK.",".KrrrrrYYrrrrrK.",".KKKKKKKKKKKKKK."],"cup":[".......F........","......FOF.......",".......F........",".......C........",".......C........","....PPPPPPPP....","...PPWPPPPSPP...","..PPPPPZPPPPPP..","..PPSPPPPPWPPP..",".PPPPPPPPPPPPPP.",".KKKKKKKKKKKKKK.","..KTtTtTtTtTtK..","..KTtTtTtTtTtK..","...KTtTtTtTtK...","...KTtTtTtTtK...","...KKKKKKKKKK..."],"bal":["...BBBBBB...","..BBBBBBBB..",".BHHBBBBBBb.",".BHBBBBBBBb.","BBBBBBBBBBbb","BBBBBBBBBBbb","BBBBBBBBBBbb",".BBBBBBBBbb.",".BBBBBBBBbb.","..BBBBBBbb..","...BBBBbb...","....BBbb....",".....bb.....","....bbbb....",".....s......","......s.....","......s.....",".....s......",".....s......","......s.....","......s.....",".....s......"],"gboy":["KKKKKKKK","KGGGGGGK","KGLLLLGK","KGLLLLGK","KGLLLLGK","KGGGGGGK","KGKGGRGK","KKKKGGRK","KGKGGGGK","KKKKKKKK"]};
+      var C = {"red":{"K":"#1a0a00","R":"#e8433a","r":"#a8231c","W":"#ff8a7a","Y":"#ffd23f"},"purple":{"K":"#1a0a00","R":"#8e5bd8","r":"#5a3496","W":"#c39bff","Y":"#ffd23f"},"teal":{"K":"#1a0a00","R":"#2fb8b0","r":"#1a7a74","W":"#8ff0e8","Y":"#ff6fa5"},"cup":{"F":"#ffd23f","O":"#ff8a1f","C":"#7fd3ff","P":"#ff9ec4","W":"#fff","S":"#3ec7c2","Z":"#ffd23f","K":"#1a0a00","T":"#3ec7c2","t":"#1f8f8a"},"pink":{"B":"#ff6fa5","b":"#c9417a","H":"#fff","s":"#fff"},"aqua":{"B":"#3ec7c2","b":"#1f8f8a","H":"#fff","s":"#fff"},"gold":{"B":"#ffd23f","b":"#d39a00","H":"#fff","s":"#fff"},"gboy":{"K":"#1a0a00","G":"#c9c9d6","L":"#8bac0f","R":"#c0392b"}};
+      document.querySelectorAll('[data-px]').forEach(function (el) {
+        var k = el.dataset.px.split(':'), rows = S[k[0]], pal = C[k[1]], r = '';
+        rows.forEach(function (row, y) {
+          for (var x = 0; x < row.length;) {
+            var c = row[x], n = 1;
+            while (row[x + n] === c) n++;
+            if (pal[c]) r += '<rect x="' + x + '" y="' + y + '" width="' + n + '" height="1" fill="' + pal[c] + '"/>';
+            x += n;
+          }
+        });
+        el.outerHTML = '<svg class="pp ' + el.className + '" viewBox="0 0 ' + rows[0].length + ' ' + rows.length + '" shape-rendering="crispEdges" aria-hidden="true">' + r + '</svg>';
+      });
+    })();
+    </script>
     <div class="gg" id="gg"></div>
     <button id="playBtn" onclick="startGame()">▶ PLAY</button>
     <div class="ch">← → MOVE &nbsp;|&nbsp; ↑ or SPACE to JUMP</div>
