@@ -470,7 +470,7 @@ html, body {
       <div class="candles" aria-hidden="true"><i></i><i></i><i></i></div>
       <div class="ss-title"><svg class="frost" viewBox="0 0 40 6" preserveAspectRatio="none" shape-rendering="crispEdges" aria-hidden="true"><rect width="40" height="2" fill="#ff9ec4"/><rect width="40" height="1" fill="#ffc6dc"/><rect x="1" y="2" width="2" height="3" fill="#ff9ec4"/><rect x="5" y="2" width="1" height="2" fill="#ff9ec4"/><rect x="9" y="2" width="3" height="4" fill="#ff9ec4"/><rect x="15" y="2" width="2" height="2" fill="#ff9ec4"/><rect x="20" y="2" width="1" height="3" fill="#ff9ec4"/><rect x="24" y="2" width="3" height="4" fill="#ff9ec4"/><rect x="30" y="2" width="2" height="2" fill="#ff9ec4"/><rect x="34" y="2" width="1" height="3" fill="#ff9ec4"/><rect x="37" y="2" width="2" height="4" fill="#ff9ec4"/></svg><span>Happy <b>30</b> Pranav!</span></div>
     </div>
-    <div class="ss-sub"><span class="l1">30 years of not having a Game Boy <i class="gboy" data-px="gboy:gboy"></i></span><span class="l2">Since your biggest love language is gifts — here's a game to get yours!</span></div>
+    <div class="ss-sub"><span class="l1">30 years of not having a Game Boy <i class="gboy" data-px="gboy:gboy"></i></span><span class="l2">Since your biggest love language is gifts, here's a game to get yours!</span></div>
     <script>
     // Pixel sprites: each string is one row, each letter a colour key ('.' = transparent).
     // drawSprites() turns every <i data-px="sprite:palette"> into a crisp SVG.
@@ -529,7 +529,7 @@ html, body {
 
 <script>
 // ══════════════════════════════════════════
-// 🎁 GIFTS — replace placeholder messages!
+// 🎁 GIFTS: replace placeholder messages!
 // ══════════════════════════════════════════
 const GIFTS = [
   {
@@ -558,7 +558,7 @@ const GIFTS = [
   },
   {
     id: 3,
-    unlock: new Date(2026, 9, 11),   // Oct 11 — BIRTHDAY!
+    unlock: new Date(2026, 9, 11),   // Oct 11: BIRTHDAY!
     label: 'Oct 11 🎂',
     emoji: '🎂',
     title: 'HAPPY BIRTHDAY!! 🎉🎊',
@@ -812,7 +812,7 @@ function tickParts() {
 }
 
 // ══════════════════════════════════════════
-// DRAW — BACKGROUND
+// DRAW: BACKGROUND
 // ══════════════════════════════════════════
 function dBg() {
   const g = ctx.createLinearGradient(0,0,0,CH);
@@ -844,7 +844,7 @@ function dClouds(t) {
 }
 
 // ══════════════════════════════════════════
-// DRAW — TERRAIN
+// DRAW: TERRAIN
 // ══════════════════════════════════════════
 function dGround() {
   ctx.fillStyle='#5b9e38'; ctx.fillRect(0,GY,CW,14);
@@ -911,7 +911,7 @@ function dFlag(t) {
 }
 
 // ══════════════════════════════════════════
-// DRAW — MUSHROOMS
+// DRAW: MUSHROOMS
 // ══════════════════════════════════════════
 const CAP_COLS = ['#e03030','#d4922a','#2899c8','#8850d0'];
 
@@ -1101,7 +1101,7 @@ function updateHUD() {
 updateHUD();
 
 // ══════════════════════════════════════════
-// AUDIO (Web Audio API — no external deps)
+// AUDIO (Web Audio API, no external deps)
 // ══════════════════════════════════════════
 let AC = null;
 function ac() {
