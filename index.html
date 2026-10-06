@@ -689,6 +689,8 @@ const CW = 800, CH = 500;
 // PERSISTENCE
 // ══════════════════════════════════════════
 let saved = [];
+// add ?reset to the link to wipe saved progress on this device (handy for testing)
+if (new URLSearchParams(location.search).has('reset')) { try { localStorage.removeItem('bdayV2'); } catch(e){} }
 try { saved = JSON.parse(localStorage.getItem('bdayV2') || '[]'); } catch(e){}
 function persist() { try { localStorage.setItem('bdayV2', JSON.stringify(saved)); } catch(e){} }
 
